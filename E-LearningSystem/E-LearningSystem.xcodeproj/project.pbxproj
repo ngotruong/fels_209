@@ -7,21 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		081DEFCE1DC974960063677D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081DEFCD1DC974960063677D /* AppDelegate.swift */; };
-		081DEFD01DC974960063677D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081DEFCF1DC974960063677D /* ViewController.swift */; };
-		081DEFD31DC974960063677D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 081DEFD11DC974960063677D /* Main.storyboard */; };
-		081DEFD51DC974960063677D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 081DEFD41DC974960063677D /* Assets.xcassets */; };
-		081DEFD81DC974960063677D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 081DEFD61DC974960063677D /* LaunchScreen.storyboard */; };
+		08E493841DCB0F8000A3FDC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E493781DCB0F8000A3FDC7 /* AppDelegate.swift */; };
+		08E493851DCB0F8000A3FDC7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E4937A1DCB0F8000A3FDC7 /* LoginViewController.swift */; };
+		08E493861DCB0F8000A3FDC7 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E4937B1DCB0F8000A3FDC7 /* RegisterViewController.swift */; };
+		08E493881DCB0F8000A3FDC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08E4937F1DCB0F8000A3FDC7 /* Assets.xcassets */; };
+		08E493891DCB0F8000A3FDC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08E493811DCB0F8000A3FDC7 /* LaunchScreen.storyboard */; };
+		08E4938A1DCB0F8000A3FDC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08E493821DCB0F8000A3FDC7 /* Main.storyboard */; };
+		08E4938D1DCB2E2900A3FDC7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 08E4938C1DCB2E2900A3FDC7 /* GoogleService-Info.plist */; };
+		B46FECE0585D01CA49090FB0 /* libPods-E-LearningSystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C91DB3C6CE2DAB33E5CC6D28 /* libPods-E-LearningSystem.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		081DEFCA1DC974960063677D /* E-LearningSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "E-LearningSystem.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		081DEFCD1DC974960063677D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		081DEFCF1DC974960063677D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		081DEFD21DC974960063677D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		081DEFD41DC974960063677D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		081DEFD71DC974960063677D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		081DEFD91DC974960063677D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		08E493781DCB0F8000A3FDC7 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		08E4937A1DCB0F8000A3FDC7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		08E4937B1DCB0F8000A3FDC7 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		08E4937F1DCB0F8000A3FDC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		08E493811DCB0F8000A3FDC7 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		08E493821DCB0F8000A3FDC7 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		08E4938C1DCB2E2900A3FDC7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		08E4938E1DCB32B200A3FDC7 /* E-LearningSystem-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "E-LearningSystem-Bridging-Header.h"; sourceTree = "<group>"; };
+		6F677BA34AD80BB31E37DFCD /* Pods-E-LearningSystem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-E-LearningSystem.release.xcconfig"; path = "Pods/Target Support Files/Pods-E-LearningSystem/Pods-E-LearningSystem.release.xcconfig"; sourceTree = "<group>"; };
+		C91DB3C6CE2DAB33E5CC6D28 /* libPods-E-LearningSystem.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-E-LearningSystem.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E73FAC88CF660BCEFFB1895F /* Pods-E-LearningSystem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-E-LearningSystem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-E-LearningSystem/Pods-E-LearningSystem.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B46FECE0585D01CA49090FB0 /* libPods-E-LearningSystem.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +50,8 @@
 			children = (
 				081DEFCC1DC974960063677D /* E-LearningSystem */,
 				081DEFCB1DC974960063677D /* Products */,
+				E4E17A600EC63D499353B1B8 /* Pods */,
+				78EF7324DA26FC7228FA317B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +66,90 @@
 		081DEFCC1DC974960063677D /* E-LearningSystem */ = {
 			isa = PBXGroup;
 			children = (
-				081DEFCD1DC974960063677D /* AppDelegate.swift */,
-				081DEFCF1DC974960063677D /* ViewController.swift */,
-				081DEFD11DC974960063677D /* Main.storyboard */,
-				081DEFD41DC974960063677D /* Assets.xcassets */,
-				081DEFD61DC974960063677D /* LaunchScreen.storyboard */,
+				08E4938B1DCB1D4000A3FDC7 /* Utils */,
+				08E493771DCB0F8000A3FDC7 /* AppDelegate */,
+				08E493791DCB0F8000A3FDC7 /* Controllers */,
+				08E4937D1DCB0F8000A3FDC7 /* Models */,
+				08E4937E1DCB0F8000A3FDC7 /* Resources */,
+				08E493801DCB0F8000A3FDC7 /* Storyboards */,
+				08E493831DCB0F8000A3FDC7 /* Views */,
 				081DEFD91DC974960063677D /* Info.plist */,
+				08E4938C1DCB2E2900A3FDC7 /* GoogleService-Info.plist */,
+				08E4938E1DCB32B200A3FDC7 /* E-LearningSystem-Bridging-Header.h */,
 			);
 			path = "E-LearningSystem";
+			sourceTree = "<group>";
+		};
+		08E493771DCB0F8000A3FDC7 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				08E493781DCB0F8000A3FDC7 /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		08E493791DCB0F8000A3FDC7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				08E4937A1DCB0F8000A3FDC7 /* LoginViewController.swift */,
+				08E4937B1DCB0F8000A3FDC7 /* RegisterViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		08E4937D1DCB0F8000A3FDC7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		08E4937E1DCB0F8000A3FDC7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				08E4937F1DCB0F8000A3FDC7 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		08E493801DCB0F8000A3FDC7 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				08E493811DCB0F8000A3FDC7 /* LaunchScreen.storyboard */,
+				08E493821DCB0F8000A3FDC7 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		08E493831DCB0F8000A3FDC7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		08E4938B1DCB1D4000A3FDC7 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		78EF7324DA26FC7228FA317B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C91DB3C6CE2DAB33E5CC6D28 /* libPods-E-LearningSystem.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E4E17A600EC63D499353B1B8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E73FAC88CF660BCEFFB1895F /* Pods-E-LearningSystem.debug.xcconfig */,
+				6F677BA34AD80BB31E37DFCD /* Pods-E-LearningSystem.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,10 +159,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 081DEFDC1DC974960063677D /* Build configuration list for PBXNativeTarget "E-LearningSystem" */;
 			buildPhases = (
+				195B561DF31D332E053B5B41 /* [CP] Check Pods Manifest.lock */,
 				081DEFC61DC974960063677D /* Sources */,
 				081DEFC71DC974960063677D /* Frameworks */,
 				081DEFC81DC974960063677D /* Resources */,
 				081DEFDF1DC974CE0063677D /* ShellScript */,
+				6A8B5F13BE2EF463E8B84601 /* [CP] Embed Pods Frameworks */,
+				69391FD2CDECB50886523573 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -98,6 +189,7 @@
 					081DEFC91DC974960063677D = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = VVBVRY525G;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -125,9 +217,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				081DEFD81DC974960063677D /* LaunchScreen.storyboard in Resources */,
-				081DEFD51DC974960063677D /* Assets.xcassets in Resources */,
-				081DEFD31DC974960063677D /* Main.storyboard in Resources */,
+				08E493881DCB0F8000A3FDC7 /* Assets.xcassets in Resources */,
+				08E4938D1DCB2E2900A3FDC7 /* GoogleService-Info.plist in Resources */,
+				08E4938A1DCB0F8000A3FDC7 /* Main.storyboard in Resources */,
+				08E493891DCB0F8000A3FDC7 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +240,51 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
+		195B561DF31D332E053B5B41 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		69391FD2CDECB50886523573 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-E-LearningSystem/Pods-E-LearningSystem-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6A8B5F13BE2EF463E8B84601 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-E-LearningSystem/Pods-E-LearningSystem-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -154,31 +292,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				081DEFD01DC974960063677D /* ViewController.swift in Sources */,
-				081DEFCE1DC974960063677D /* AppDelegate.swift in Sources */,
+				08E493851DCB0F8000A3FDC7 /* LoginViewController.swift in Sources */,
+				08E493861DCB0F8000A3FDC7 /* RegisterViewController.swift in Sources */,
+				08E493841DCB0F8000A3FDC7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		081DEFD11DC974960063677D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				081DEFD21DC974960063677D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		081DEFD61DC974960063677D /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				081DEFD71DC974960063677D /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		081DEFDA1DC974960063677D /* Debug */ = {
@@ -199,6 +319,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -221,7 +342,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -248,6 +369,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -264,7 +386,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -274,32 +396,41 @@
 		};
 		081DEFDD1DC974960063677D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E73FAC88CF660BCEFFB1895F /* Pods-E-LearningSystem.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = VVBVRY525G;
 				INFOPLIST_FILE = "E-LearningSystem/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.framgia.vietnam.E-LearningSystem";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "cdb19040-94be-406b-96cd-34d150cee061";
 				PROVISIONING_PROFILE_SPECIFIER = "XC: *";
-				SWIFT_VERSION = 3.0;
+				SWIFT_OBJC_BRIDGING_HEADER = "E-LearningSystem/E-LearningSystem-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		081DEFDE1DC974960063677D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F677BA34AD80BB31E37DFCD /* Pods-E-LearningSystem.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "E-LearningSystem/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.framgia.vietnam.E-LearningSystem";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_OBJC_BRIDGING_HEADER = "E-LearningSystem/E-LearningSystem-Bridging-Header.h";
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

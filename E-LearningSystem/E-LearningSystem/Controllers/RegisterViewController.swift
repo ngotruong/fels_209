@@ -1,0 +1,68 @@
+//
+//  RegisterViewController.swift
+//  E-LearningSystem
+//
+//  Created by Ngo Sy Truong on 11/2/16.
+//  Copyright © 2016 Ngo Sy Truong. All rights reserved.
+//
+
+import UIKit
+
+class RegisterViewController: UIViewController {
+    
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var cornfirmPasswordTextField: UITextField!
+    @IBOutlet weak var fullnameTextField: UITextField!
+    @IBOutlet weak var createAccountButton: UIButton!
+    @IBOutlet weak var signInButton: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        createAccountButton.layer.cornerRadius = 10
+        createAccountButton.layer.borderWidth = 2
+        createAccountButton.layer.borderColor = UIColor.whiteColor().CGColor
+        signInButton.layer.cornerRadius = 10
+        signInButton.layer.borderWidth = 2
+        signInButton.layer.borderColor = UIColor.whiteColor().CGColor
+        addIconToTextFields()
+    }
+    
+    @IBAction func signIn(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    private func addIconToTextFields() {
+        let imageViewEmail = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 20))
+        imageViewEmail.contentMode = UIViewContentMode.Center
+        let imageEmail  = UIImage(named: "email_icon")
+        imageViewEmail.image = imageEmail
+        emailTextField.leftView = imageViewEmail
+        emailTextField.leftViewMode = UITextFieldViewMode.Always
+        
+        let imageViewPassword = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 20))
+        imageViewPassword.contentMode = UIViewContentMode.Center
+        let imagePassword  = UIImage(named: "password_icon")
+        imageViewPassword.image = imagePassword
+        passwordTextField.leftView = imageViewPassword
+        passwordTextField.leftViewMode = UITextFieldViewMode.Always
+        
+        let imageViewConfirmPass = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 20))
+        imageViewConfirmPass.contentMode = UIViewContentMode.Center
+        let imageConfirmPass  = UIImage(named: "password_icon")
+        imageViewConfirmPass.image = imageConfirmPass
+        cornfirmPasswordTextField.leftView = imageViewConfirmPass
+        cornfirmPasswordTextField.leftViewMode = UITextFieldViewMode.Always
+        
+        let imageViewFullname = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 20))
+        imageViewFullname.contentMode = UIViewContentMode.Center
+        let imageFullname  = UIImage(named: "fullname_icon")
+        imageViewFullname.image = imageFullname
+        fullnameTextField.leftView = imageViewFullname
+        fullnameTextField.leftViewMode = UITextFieldViewMode.Always
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
