@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "25F76F07286F2228FAB63FAEF146271077E8C841",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "A94F6FDF452620BD3EA3B47F324AFAB59F395F22" : 9223372036854775807,
+    "25F76F07286F2228FAB63FAEF146271077E8C841" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "5F1F38FE-C11E-448B-A5F8-9E80C44E7A61",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "A94F6FDF452620BD3EA3B47F324AFAB59F395F22" : "..\/..\/..\/Volumes\/Data\/Framgia\/DemoGit\/Test",
+    "25F76F07286F2228FAB63FAEF146271077E8C841" : "fels_209\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "E-LearningSystem",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "E-LearningSystem\/E-LearningSystem.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:phungvantung\/fels_209.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "25F76F07286F2228FAB63FAEF146271077E8C841"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:phungvantung\/Test.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A94F6FDF452620BD3EA3B47F324AFAB59F395F22"
+    }
+  ]
+}
