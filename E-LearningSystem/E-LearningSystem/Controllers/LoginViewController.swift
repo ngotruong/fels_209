@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController, GIDSignInUIDelegate {
+class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
@@ -17,6 +17,9 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().delegate = self
         signInButton.layer.cornerRadius = 10
         signInButton.layer.borderWidth = 3
         signInButton.layer.borderColor = UIColor.whiteColor().CGColor
@@ -26,27 +29,79 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         addIconToTextFields()
     }
     
+    @IBAction func signInBasic(sender: AnyObject) {
+        let request = NSMutableURLRequest(URL: NSURL(string: "https://manh-nt.herokuapp.com/login.json")!)
+        let session = NSURLSession.sharedSession()
+        request.HTTPMethod = "POST"
+        let postString = "session[email]=email@example.com&session[password]=123456&session[remember_me]=1"
+        request.HTTPBody = postString.dataUsingEncoding(NSUTF8StringEncoding)
+        
+        session.dataTaskWithRequest(request) {data, response, error in
+            guard let realResponse = response as? NSHTTPURLResponse where
+                realResponse.statusCode == 200 else {
+                    print("Not a 200 response")
+                    return
+            }
+            guard error == nil && data != nil else {
+                print("error=\(error)")
+                return
+            }
+            //            let responseString = String(data: data!, encoding: NSUTF8StringEncoding)
+            //            print("responseString = \(responseString!)")
+            do {
+                let json = try NSJSONSerialization.JSONObjectWithData(data!, options: .AllowFragments) as? [String: AnyObject]
+                if let user = json?["user"] as? [String: AnyObject] {
+                    if let name = user["name"] as? String {
+                        print("Name: ", name)
+                    } else {
+                        print("failed Parameter")
+                    }
+                }
+            } catch let jsonError {
+                print("Error with Json: \(jsonError)")
+            }
+            }.resume()
+    }
+    
     @IBAction func googlePlusButtonTouchUpInside(sender: AnyObject) {
         print("abc abc")
-        GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().signIn()
     }
     
     // MARK: - Google SignIn Delegate
-    func signInWillDispatch(signIn: GIDSignIn!, error: NSError!) {
+    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
+                withError error: NSError!) {
+        if error == nil {
+            //            let userId = user.userID
+            //            let idToken = user.authentication.idToken
+            let fullName = user.profile.name
+            //            let givenName = user.profile.givenName
+            //            let familyName = user.profile.familyName
+            let email = user.profile.email
+            let profile = (self.storyboard?.instantiateViewControllerWithIdentifier("Profile") as? Profile)!
+            let appDelegate: AppDelegate = (UIApplication.sharedApplication().delegate as? AppDelegate)!
+            appDelegate.window?.rootViewController = profile
+            profile.emailLabel?.text = email
+            profile.fullnameLabel?.text = fullName
+            if user.profile.hasImage {
+                let pic = user.profile.imageURLWithDimension(100)
+                if let data = NSData(contentsOfURL: pic) {
+                    profile.avataImageView.image = UIImage(data: data)
+                }
+            }
+        } else {
+            print("error")
+        }
     }
     
-    func signIn(signIn: GIDSignIn!,
-                presentViewController viewController: UIViewController!) {
-        self.presentViewController(viewController, animated: true, completion: nil)
-        print("Sign in present")
+    func signIn(signIn: GIDSignIn!, didDisconnectWithUser user: GIDGoogleUser!,
+                withError error: NSError!) {
+        NSNotificationCenter.defaultCenter().postNotificationName(
+            "ToggleAuthUINotification",
+            object: nil,
+            userInfo: ["statusText": "User has disconnected."])
     }
     
-    func signIn(signIn: GIDSignIn!,
-                dismissViewController viewController: UIViewController!) {
-        self.dismissViewControllerAnimated(true, completion: nil)
-        print("Sign in dissmiss")
-    }
     // MARK: - Add icons to the Textfields
     private func addIconToTextFields() {
         let imageViewEmail = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 20))
