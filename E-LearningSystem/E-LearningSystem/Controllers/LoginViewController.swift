@@ -15,6 +15,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    let loginService = LoginService()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         signInButton?.layer.cornerRadius = 10
@@ -41,5 +43,13 @@ class LoginViewController: UIViewController {
         imageViewPassword.image = imagePassword
         passwordTextField?.leftView = imageViewPassword
         passwordTextField?.leftViewMode = UITextFieldViewMode.Always
+    }
+    
+    @IBAction func signinAction(sender: AnyObject) {
+        loginService.signinBasic(emailTextField.text!, password: passwordTextField.text!, success: { (user) in
+           print(user)
+            }) { (message) in
+                print(message)
+        }
     }
 }

@@ -13,6 +13,8 @@
 		0822403C1DCC334000E131D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 082240341DCC334000E131D9 /* Main.storyboard */; };
 		0822403E1DCC38E200E131D9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0822403D1DCC38E200E131D9 /* LoginViewController.swift */; };
 		082240401DCC392000E131D9 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0822403F1DCC392000E131D9 /* RegisterViewController.swift */; };
+		14680AC81DD027C900686780 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14680AC71DD027C900686780 /* LoginService.swift */; };
+		90C7079EA8BFA01C8C98F0FF /* Pods_E_LearningSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E3E9A2BE215B7B04984907 /* Pods_E_LearningSystem.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,10 @@
 		082240351DCC334000E131D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0822403D1DCC38E200E131D9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0822403F1DCC392000E131D9 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		14680AC71DD027C900686780 /* LoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		65E3E9A2BE215B7B04984907 /* Pods_E_LearningSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_E_LearningSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D299D636811CAE7BC7C716E /* Pods-E-LearningSystem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-E-LearningSystem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-E-LearningSystem/Pods-E-LearningSystem.debug.xcconfig"; sourceTree = "<group>"; };
+		9A60E76A9AB7351C7289852A /* Pods-E-LearningSystem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-E-LearningSystem.release.xcconfig"; path = "Pods/Target Support Files/Pods-E-LearningSystem/Pods-E-LearningSystem.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90C7079EA8BFA01C8C98F0FF /* Pods_E_LearningSystem.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +49,8 @@
 			children = (
 				081DEFCC1DC974960063677D /* E-LearningSystem */,
 				081DEFCB1DC974960063677D /* Products */,
+				F970AB28544A83FEC6771653 /* Pods */,
+				1C38225A9CD1BCFE58C6D2E2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,12 +65,12 @@
 		081DEFCC1DC974960063677D /* E-LearningSystem */ = {
 			isa = PBXGroup;
 			children = (
+				14680AC61DD027B300686780 /* APIService */,
 				0822402A1DCC334000E131D9 /* AppDelegate */,
 				0822402C1DCC334000E131D9 /* Controllers */,
 				0822402E1DCC334000E131D9 /* Models */,
 				0822402F1DCC334000E131D9 /* Resources */,
 				082240311DCC334000E131D9 /* Storyboards */,
-				082240361DCC334000E131D9 /* Utils */,
 				082240371DCC334000E131D9 /* Views */,
 				081DEFD91DC974960063677D /* Info.plist */,
 			);
@@ -109,18 +118,36 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		082240361DCC334000E131D9 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		082240371DCC334000E131D9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		14680AC61DD027B300686780 /* APIService */ = {
+			isa = PBXGroup;
+			children = (
+				14680AC71DD027C900686780 /* LoginService.swift */,
+			);
+			path = APIService;
+			sourceTree = "<group>";
+		};
+		1C38225A9CD1BCFE58C6D2E2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				65E3E9A2BE215B7B04984907 /* Pods_E_LearningSystem.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F970AB28544A83FEC6771653 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6D299D636811CAE7BC7C716E /* Pods-E-LearningSystem.debug.xcconfig */,
+				9A60E76A9AB7351C7289852A /* Pods-E-LearningSystem.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,10 +157,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 081DEFDC1DC974960063677D /* Build configuration list for PBXNativeTarget "E-LearningSystem" */;
 			buildPhases = (
+				276E09A2F770ACE4E4A40328 /* [CP] Check Pods Manifest.lock */,
 				081DEFC61DC974960063677D /* Sources */,
 				081DEFC71DC974960063677D /* Frameworks */,
 				081DEFC81DC974960063677D /* Resources */,
 				081DEFDF1DC974CE0063677D /* ShellScript */,
+				BCF012B85DF81336C57368D4 /* [CP] Embed Pods Frameworks */,
+				D660E3F663E51EFE144E1474 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -206,6 +236,51 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
+		276E09A2F770ACE4E4A40328 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		BCF012B85DF81336C57368D4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-E-LearningSystem/Pods-E-LearningSystem-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D660E3F663E51EFE144E1474 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-E-LearningSystem/Pods-E-LearningSystem-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -216,6 +291,7 @@
 				0822403E1DCC38E200E131D9 /* LoginViewController.swift in Sources */,
 				082240381DCC334000E131D9 /* AppDelegate.swift in Sources */,
 				082240401DCC392000E131D9 /* RegisterViewController.swift in Sources */,
+				14680AC81DD027C900686780 /* LoginService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +335,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -309,6 +386,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -336,7 +414,9 @@
 		};
 		081DEFDD1DC974960063677D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6D299D636811CAE7BC7C716E /* Pods-E-LearningSystem.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
@@ -353,7 +433,9 @@
 		};
 		081DEFDE1DC974960063677D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A60E76A9AB7351C7289852A /* Pods-E-LearningSystem.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";

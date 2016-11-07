@@ -63,6 +63,9 @@ class RegisterViewController: UIViewController {
         fullnameTextField?.leftViewMode = UITextFieldViewMode.Always
     }
     
+    @IBAction func createAccountAction(sender: AnyObject) {
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
