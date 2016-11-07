@@ -15,8 +15,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    let loginService = LoginService()
-
+    var loginService = LoginService()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         signInButton?.layer.cornerRadius = 10
@@ -46,10 +46,14 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func signinAction(sender: AnyObject) {
-        loginService.signinBasic(emailTextField.text!, password: passwordTextField.text!, success: { (user) in
-           print(user)
-            }) { (message) in
-                print(message)
+        loginService.signinBasic(emailTextField.text ?? "", password: passwordTextField.text ?? "", success: { (user) in
+            print(user)
+        }) { (message) in
+            let alertValidateController = UIAlertController(title: "Message", message: "Invalid email/password combination", preferredStyle: .Alert)
+            let OkButton = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            alertValidateController.addAction(OkButton)
+            self.presentViewController(alertValidateController, animated: true) {
+            }
         }
     }
 }
