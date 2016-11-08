@@ -13,6 +13,9 @@
 		0822403C1DCC334000E131D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 082240341DCC334000E131D9 /* Main.storyboard */; };
 		0822403E1DCC38E200E131D9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0822403D1DCC38E200E131D9 /* LoginViewController.swift */; };
 		082240401DCC392000E131D9 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0822403F1DCC392000E131D9 /* RegisterViewController.swift */; };
+		08D8DB6C1DD17E5D0024AA27 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D8DB691DD17E5D0024AA27 /* UserProfile.swift */; };
+		08D8DB6D1DD17E5D0024AA27 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D8DB6A1DD17E5D0024AA27 /* HomeTableViewCell.swift */; };
+		08D8DB6E1DD17E5D0024AA27 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08D8DB6B1DD17E5D0024AA27 /* HomeTableViewCell.xib */; };
 		14680AC81DD027C900686780 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14680AC71DD027C900686780 /* LoginService.swift */; };
 		90C7079EA8BFA01C8C98F0FF /* Pods_E_LearningSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E3E9A2BE215B7B04984907 /* Pods_E_LearningSystem.framework */; };
 /* End PBXBuildFile section */
@@ -26,6 +29,9 @@
 		082240351DCC334000E131D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0822403D1DCC38E200E131D9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0822403F1DCC392000E131D9 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		08D8DB691DD17E5D0024AA27 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		08D8DB6A1DD17E5D0024AA27 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		08D8DB6B1DD17E5D0024AA27 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
 		14680AC71DD027C900686780 /* LoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		65E3E9A2BE215B7B04984907 /* Pods_E_LearningSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_E_LearningSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D299D636811CAE7BC7C716E /* Pods-E-LearningSystem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-E-LearningSystem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-E-LearningSystem/Pods-E-LearningSystem.debug.xcconfig"; sourceTree = "<group>"; };
@@ -65,13 +71,13 @@
 		081DEFCC1DC974960063677D /* E-LearningSystem */ = {
 			isa = PBXGroup;
 			children = (
+				08D8DB681DD17E460024AA27 /* Views */,
 				14680AC61DD027B300686780 /* APIService */,
 				0822402A1DCC334000E131D9 /* AppDelegate */,
 				0822402C1DCC334000E131D9 /* Controllers */,
 				0822402E1DCC334000E131D9 /* Models */,
 				0822402F1DCC334000E131D9 /* Resources */,
 				082240311DCC334000E131D9 /* Storyboards */,
-				082240371DCC334000E131D9 /* Views */,
 				081DEFD91DC974960063677D /* Info.plist */,
 			);
 			path = "E-LearningSystem";
@@ -118,9 +124,12 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		082240371DCC334000E131D9 /* Views */ = {
+		08D8DB681DD17E460024AA27 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				08D8DB691DD17E5D0024AA27 /* UserProfile.swift */,
+				08D8DB6A1DD17E5D0024AA27 /* HomeTableViewCell.swift */,
+				08D8DB6B1DD17E5D0024AA27 /* HomeTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -216,6 +225,7 @@
 			files = (
 				0822403C1DCC334000E131D9 /* Main.storyboard in Resources */,
 				0822403A1DCC334000E131D9 /* Assets.xcassets in Resources */,
+				08D8DB6E1DD17E5D0024AA27 /* HomeTableViewCell.xib in Resources */,
 				0822403B1DCC334000E131D9 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,8 +298,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08D8DB6D1DD17E5D0024AA27 /* HomeTableViewCell.swift in Sources */,
 				0822403E1DCC38E200E131D9 /* LoginViewController.swift in Sources */,
 				082240381DCC334000E131D9 /* AppDelegate.swift in Sources */,
+				08D8DB6C1DD17E5D0024AA27 /* UserProfile.swift in Sources */,
 				082240401DCC392000E131D9 /* RegisterViewController.swift in Sources */,
 				14680AC81DD027C900686780 /* LoginService.swift in Sources */,
 			);

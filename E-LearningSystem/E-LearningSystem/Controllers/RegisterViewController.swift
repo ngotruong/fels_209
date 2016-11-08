@@ -65,8 +65,4 @@ class RegisterViewController: UIViewController {
     
     @IBAction func createAccountAction(sender: AnyObject) {
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
 }

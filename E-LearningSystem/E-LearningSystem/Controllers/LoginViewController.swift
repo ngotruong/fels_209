@@ -15,10 +15,11 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    let loginService = LoginService()
-
+    var loginService = LoginService()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBarHidden = true
         signInButton?.layer.cornerRadius = 10
         signInButton?.layer.borderWidth = 3
         signInButton?.layer.borderColor = UIColor.whiteColor().CGColor
@@ -26,6 +27,23 @@ class LoginViewController: UIViewController {
         signUpButton?.layer.borderWidth = 3
         signUpButton?.layer.borderColor = UIColor.whiteColor().CGColor
         addIconToTextFields()
+    }
+    
+    @IBAction func signinAction(sender: AnyObject) {
+        weak var weakSelf = self
+        loginService.signinBasic(emailTextField.text ?? "", password: passwordTextField.text ?? "", success: { (user) in
+            let profiles = (weakSelf!.storyboard?.instantiateViewControllerWithIdentifier("UserProfile") as? UserProfile)!
+            profiles.user = user
+            dispatch_async(dispatch_get_main_queue(), {
+                weakSelf!.navigationController?.pushViewController(profiles, animated: true)
+            })
+        }) { (message) in
+            let alertValidateController = UIAlertController(title: "Message", message: "Invalid email/password combination", preferredStyle: .Alert)
+            let OkButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
+            alertValidateController.addAction(OkButton)
+            weakSelf!.presentViewController(alertValidateController, animated: true) {
+            }
+        }
     }
     
     // MARK: - Add icons to the Textfields
@@ -43,13 +61,5 @@ class LoginViewController: UIViewController {
         imageViewPassword.image = imagePassword
         passwordTextField?.leftView = imageViewPassword
         passwordTextField?.leftViewMode = UITextFieldViewMode.Always
-    }
-    
-    @IBAction func signinAction(sender: AnyObject) {
-        loginService.signinBasic(emailTextField.text!, password: passwordTextField.text!, success: { (user) in
-           print(user)
-            }) { (message) in
-                print(message)
-        }
     }
 }
