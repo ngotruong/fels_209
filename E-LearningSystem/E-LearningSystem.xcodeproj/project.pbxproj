@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04DB127B1DD2152300D8DA8E /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB127A1DD2152300D8DA8E /* UpdateProfileViewController.swift */; };
 		082240381DCC334000E131D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0822402B1DCC334000E131D9 /* AppDelegate.swift */; };
 		0822403A1DCC334000E131D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 082240301DCC334000E131D9 /* Assets.xcassets */; };
 		0822403B1DCC334000E131D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 082240321DCC334000E131D9 /* LaunchScreen.storyboard */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04DB127A1DD2152300D8DA8E /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
 		081DEFCA1DC974960063677D /* E-LearningSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "E-LearningSystem.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		081DEFD91DC974960063677D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0822402B1DCC334000E131D9 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			children = (
 				0822403F1DCC392000E131D9 /* RegisterViewController.swift */,
 				0822403D1DCC38E200E131D9 /* LoginViewController.swift */,
+				04DB127A1DD2152300D8DA8E /* UpdateProfileViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				0822403E1DCC38E200E131D9 /* LoginViewController.swift in Sources */,
 				082240381DCC334000E131D9 /* AppDelegate.swift in Sources */,
 				08D8DB6C1DD17E5D0024AA27 /* UserProfile.swift in Sources */,
+				04DB127B1DD2152300D8DA8E /* UpdateProfileViewController.swift in Sources */,
 				082240401DCC392000E131D9 /* RegisterViewController.swift in Sources */,
 				14680AC81DD027C900686780 /* LoginService.swift in Sources */,
 			);

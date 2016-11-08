@@ -49,7 +49,12 @@ class UserProfile: UIViewController, UITableViewDelegate, UITableViewDataSource 
     }
     
     func editAction() {
-        print("Edit")
+        if let profiles = self.storyboard?.instantiateViewControllerWithIdentifier("UpdateProfileViewController") as? UpdateProfileViewController {
+            let backItem = UIBarButtonItem()
+            backItem.title = "Cancel"
+            navigationItem.backBarButtonItem = backItem
+            self.navigationController?.pushViewController(profiles, animated: true)
+        }
     }
     
     // MARK:  UITableViewDataSource Methods
