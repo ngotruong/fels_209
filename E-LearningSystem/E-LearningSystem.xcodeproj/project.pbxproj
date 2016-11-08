@@ -13,6 +13,10 @@
 		0822403C1DCC334000E131D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 082240341DCC334000E131D9 /* Main.storyboard */; };
 		0822403E1DCC38E200E131D9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0822403D1DCC38E200E131D9 /* LoginViewController.swift */; };
 		082240401DCC392000E131D9 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0822403F1DCC392000E131D9 /* RegisterViewController.swift */; };
+		08D8DB6D1DD17E5D0024AA27 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D8DB6A1DD17E5D0024AA27 /* HomeTableViewCell.swift */; };
+		08D8DB6E1DD17E5D0024AA27 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08D8DB6B1DD17E5D0024AA27 /* HomeTableViewCell.xib */; };
+		08E7D06D1DD2DE5F006924B8 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E7D06C1DD2DE5F006924B8 /* UserProfileViewController.swift */; };
+		08E7D0701DD2F74C006924B8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E7D06F1DD2F74C006924B8 /* User.swift */; };
 		14680AC81DD027C900686780 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14680AC71DD027C900686780 /* LoginService.swift */; };
 		14EAF8E41DD08A5300DE825D /* SignupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EAF8E31DD08A5300DE825D /* SignupService.swift */; };
 		14EAF8E61DD0937700DE825D /* SignupUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14EAF8E51DD0937700DE825D /* SignupUser.swift */; };
@@ -28,6 +32,10 @@
 		082240351DCC334000E131D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0822403D1DCC38E200E131D9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0822403F1DCC392000E131D9 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		08D8DB6A1DD17E5D0024AA27 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		08D8DB6B1DD17E5D0024AA27 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
+		08E7D06C1DD2DE5F006924B8 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		08E7D06F1DD2F74C006924B8 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		14680AC71DD027C900686780 /* LoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		14EAF8E31DD08A5300DE825D /* SignupService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupService.swift; sourceTree = "<group>"; };
 		14EAF8E51DD0937700DE825D /* SignupUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupUser.swift; path = "E-LearningSystem/APIService/SignupUser.swift"; sourceTree = SOURCE_ROOT; };
@@ -69,13 +77,13 @@
 		081DEFCC1DC974960063677D /* E-LearningSystem */ = {
 			isa = PBXGroup;
 			children = (
+				08D8DB681DD17E460024AA27 /* Views */,
 				14680AC61DD027B300686780 /* APIService */,
 				0822402A1DCC334000E131D9 /* AppDelegate */,
 				0822402C1DCC334000E131D9 /* Controllers */,
-				0822402E1DCC334000E131D9 /* Models */,
+				08E7D06E1DD2F623006924B8 /* Models */,
 				0822402F1DCC334000E131D9 /* Resources */,
 				082240311DCC334000E131D9 /* Storyboards */,
-				082240371DCC334000E131D9 /* Views */,
 				081DEFD91DC974960063677D /* Info.plist */,
 			);
 			path = "E-LearningSystem";
@@ -92,18 +100,11 @@
 		0822402C1DCC334000E131D9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				08E7D06C1DD2DE5F006924B8 /* UserProfileViewController.swift */,
 				0822403F1DCC392000E131D9 /* RegisterViewController.swift */,
 				0822403D1DCC38E200E131D9 /* LoginViewController.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		0822402E1DCC334000E131D9 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				14EAF8E51DD0937700DE825D /* SignupUser.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		0822402F1DCC334000E131D9 /* Resources */ = {
@@ -123,11 +124,21 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		082240371DCC334000E131D9 /* Views */ = {
+		08D8DB681DD17E460024AA27 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				08D8DB6A1DD17E5D0024AA27 /* HomeTableViewCell.swift */,
+				08D8DB6B1DD17E5D0024AA27 /* HomeTableViewCell.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		08E7D06E1DD2F623006924B8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				08E7D06F1DD2F74C006924B8 /* User.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		14680AC61DD027B300686780 /* APIService */ = {
@@ -222,6 +233,7 @@
 			files = (
 				0822403C1DCC334000E131D9 /* Main.storyboard in Resources */,
 				0822403A1DCC334000E131D9 /* Assets.xcassets in Resources */,
+				08D8DB6E1DD17E5D0024AA27 /* HomeTableViewCell.xib in Resources */,
 				0822403B1DCC334000E131D9 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,6 +307,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				14EAF8E61DD0937700DE825D /* SignupUser.swift in Sources */,
+				08D8DB6D1DD17E5D0024AA27 /* HomeTableViewCell.swift in Sources */,
+				08E7D06D1DD2DE5F006924B8 /* UserProfileViewController.swift in Sources */,
+				08E7D0701DD2F74C006924B8 /* User.swift in Sources */,
 				0822403E1DCC38E200E131D9 /* LoginViewController.swift in Sources */,
 				082240381DCC334000E131D9 /* AppDelegate.swift in Sources */,
 				082240401DCC392000E131D9 /* RegisterViewController.swift in Sources */,

@@ -76,7 +76,6 @@ class RegisterViewController: UIViewController {
                 wearkSelf?.presentViewController(alertValidateController, animated: true) {
                 }
         }) { (message) in
-            print("failed")
             let alertFailedController = UIAlertController(title: "Message", message: message, preferredStyle: .Alert)
             let OkButton = UIAlertAction(title: "OK", style: .Default, handler: nil)
             alertFailedController.addAction(OkButton)
