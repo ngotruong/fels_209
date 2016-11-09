@@ -16,7 +16,6 @@ class LoginService {
             "password": password,
             "remember_me": "1"]
         ]
-        
         Alamofire.request(.POST, "https://manh-nt.herokuapp.com/login.json", parameters: parameter).responseJSON { response in
             if let JSON = response.result.value {
                 guard let userApp = JSON["user"] as? [String: AnyObject] else {

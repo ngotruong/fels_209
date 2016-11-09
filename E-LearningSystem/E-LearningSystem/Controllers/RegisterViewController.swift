@@ -16,6 +16,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var fullnameTextField: UITextField!
     @IBOutlet weak var createAccountButton: UIButton!
     @IBOutlet weak var signInButton: UIButton!
+    var signupService = SignupService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +65,24 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func createAccountAction(sender: AnyObject) {
+        weak var wearkSelf = self
+        let signupUser = SignupUser(name: fullnameTextField?.text ?? "", email: emailTextField?.text ?? "", password: passwordTextField?.text ?? "", passwordConfirmation: confirmPasswordTextField?.text ?? "")
+        signupService.handleLogicSignup(signupUser, success: { (user) in
+            wearkSelf?.dismissViewControllerAnimated(true, completion: nil)
+            }, validate: { (message) in
+                let alertValidateController = UIAlertController(title: "Message", message: message, preferredStyle: .Alert)
+                let OkButton = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                alertValidateController.addAction(OkButton)
+                wearkSelf?.presentViewController(alertValidateController, animated: true) {
+                }
+        }) { (message) in
+            print("failed")
+            let alertFailedController = UIAlertController(title: "Message", message: message, preferredStyle: .Alert)
+            let OkButton = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            alertFailedController.addAction(OkButton)
+            wearkSelf?.presentViewController(alertFailedController, animated: true) {
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
