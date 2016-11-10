@@ -68,7 +68,7 @@
                                 <rect key="frame" x="282" y="432" width="46" height="46"/>
                                 <state key="normal" image="googleplus_icon"/>
                                 <connections>
-                                    <action selector="googlePlusButtonTouchUpInside:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qrn-rM-7Qh"/>
+                                    <action selector="signInWithGoogle:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mtf-GT-EfB"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Rl-gb-MUI">
@@ -497,7 +497,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Tvq-mr-IFf" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Vvw-mi-4my">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Vvw-mi-4my">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

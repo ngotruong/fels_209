@@ -8,7 +8,8 @@
 
 import UIKit
 import FBSDKLoginKit
-class LoginViewController: UIViewController {
+
+class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
@@ -20,6 +21,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = true
+        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance().delegate = self
         signInButton?.layer.cornerRadius = 10
         signInButton?.layer.borderWidth = 3
         signInButton?.layer.borderColor = UIColor.whiteColor().CGColor
@@ -33,8 +36,7 @@ class LoginViewController: UIViewController {
         weak var weakSelf = self
         loginService.signinBasic(emailTextField.text ?? "", password: passwordTextField.text ?? "", success: { (user) in
             if let profiles = weakSelf?.storyboard?.instantiateViewControllerWithIdentifier("UserProfile") as? UserProfileViewController {
-                let users = User(fullname: user["name"] as? String ?? "", email: user["email"] as? String ?? "", learnedWords: user["learned_words"] as? Int ?? 0, avatar: user["avatar"] as? String ?? "", activities: user["activities"] as? [[String : AnyObject]] ?? [["": ""]])
-                profiles.user = users
+                profiles.user = user
                 dispatch_async(dispatch_get_main_queue(), {
                     weakSelf?.navigationController?.pushViewController(profiles, animated: true)
                 })
@@ -51,9 +53,9 @@ class LoginViewController: UIViewController {
     @IBAction func signinFBAction(sender: AnyObject) {
         weak var weakSelf = self
         FBSDKLoginManager().logInWithReadPermissions(["email"], fromViewController: self) { (result, error) in
-            self.loginService.signinUsingFB({ (users) in
+            self.loginService.signinUsingFB({ (user) in
                 if let profiles = weakSelf?.storyboard?.instantiateViewControllerWithIdentifier("UserProfile") as? UserProfileViewController {
-                    profiles.user = users
+                    profiles.user = user
                     weakSelf?.navigationController?.pushViewController(profiles, animated: true)
                 }}) { (message) in
                     let alertFailureController = UIAlertController(title: "Message", message: "Failed to get from facebook", preferredStyle: .Alert)
@@ -65,6 +67,40 @@ class LoginViewController: UIViewController {
         }
         
     }
+
+    @IBAction func signInWithGoogle(sender: AnyObject) {
+        GIDSignIn.sharedInstance().signIn()
+    }
+    
+    // MARK: - Google SignIn Delegate
+    func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!,
+                withError error: NSError!) {
+        if error == nil {
+            var avataUser: NSURL?
+            if user.profile.hasImage {
+                avataUser = user.profile.imageURLWithDimension(100)
+            }
+            let signInWithGoogle = UserGooglePlus(name: user.profile.name, uid: user.userID, email: user.profile.email, remoteAvatarUrl: avataUser, provider: "google")
+            weak var weakSelf = self
+            loginService.signInWithGoogle(signInWithGoogle, success: { (user) in
+                if let profiles = weakSelf?.storyboard?.instantiateViewControllerWithIdentifier("UserProfile") as? UserProfileViewController {
+                    profiles.user = user
+                    dispatch_async(dispatch_get_main_queue(), {
+                        weakSelf?.navigationController?.pushViewController(profiles, animated: true)
+                    })
+                }
+            }) { (message) in
+                let alertValidateController = UIAlertController(title: "Message", message: "Invalid email/password combination", preferredStyle: .Alert)
+                let OkButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
+                alertValidateController.addAction(OkButton)
+                weakSelf?.presentViewController(alertValidateController, animated: true) {
+                }
+            }
+        } else {
+            print("error")
+        }
+    }
+    
     // MARK: - Add icons to the Textfields
     private func addIconToTextFields() {
         let imageViewEmail = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 20))
