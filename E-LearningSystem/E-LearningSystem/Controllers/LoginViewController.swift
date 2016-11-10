@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import FBSDKLoginKit
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var signInButton: UIButton!
@@ -36,18 +36,35 @@ class LoginViewController: UIViewController {
                 let users = User(fullname: user["name"] as? String ?? "", email: user["email"] as? String ?? "", learnedWords: user["learned_words"] as? Int ?? 0, avatar: user["avatar"] as? String ?? "", activities: user["activities"] as? [[String : AnyObject]] ?? [["": ""]])
                 profiles.user = users
                 dispatch_async(dispatch_get_main_queue(), {
-                    weakSelf!.navigationController?.pushViewController(profiles, animated: true)
+                    weakSelf?.navigationController?.pushViewController(profiles, animated: true)
                 })
             }
         }) { (message) in
             let alertValidateController = UIAlertController(title: "Message", message: "Invalid email/password combination", preferredStyle: .Alert)
             let OkButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
             alertValidateController.addAction(OkButton)
-            weakSelf!.presentViewController(alertValidateController, animated: true) {
+            weakSelf?.presentViewController(alertValidateController, animated: true) {
             }
         }
     }
     
+    @IBAction func signinFBAction(sender: AnyObject) {
+        weak var weakSelf = self
+        FBSDKLoginManager().logInWithReadPermissions(["email"], fromViewController: self) { (result, error) in
+            self.loginService.signinUsingFB({ (users) in
+                if let profiles = weakSelf?.storyboard?.instantiateViewControllerWithIdentifier("UserProfile") as? UserProfileViewController {
+                    profiles.user = users
+                    weakSelf?.navigationController?.pushViewController(profiles, animated: true)
+                }}) { (message) in
+                    let alertFailureController = UIAlertController(title: "Message", message: "Failed to get from facebook", preferredStyle: .Alert)
+                    let OkButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
+                    alertFailureController.addAction(OkButton)
+                    weakSelf?.presentViewController(alertFailureController, animated: true) {
+                    }
+            }
+        }
+        
+    }
     // MARK: - Add icons to the Textfields
     private func addIconToTextFields() {
         let imageViewEmail = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 20))
