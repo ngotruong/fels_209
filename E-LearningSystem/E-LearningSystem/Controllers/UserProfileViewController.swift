@@ -49,8 +49,11 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         tableView?.contentInset.top = 0
     }
     
-    func editAction() {
-        print("Edit")
+    @objc private func editAction() {
+        if let profiles = self.storyboard?.instantiateViewControllerWithIdentifier("UpdateProfileViewController") as? UpdateProfileViewController {
+            let navController = UINavigationController(rootViewController: profiles)
+            self.presentViewController(navController, animated:true, completion: nil)
+        }
     }
     
     // MARK:  UITableViewDataSource Methods
