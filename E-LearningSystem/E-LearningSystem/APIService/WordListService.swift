@@ -8,8 +8,9 @@
 
 import UIKit
 import Alamofire
+
 class WordListService {
-    let linkJSON = LinkJSON()
+    let linkJson = LinkJSON()
     
     func showWordList(option: String, categoryID: Int?, success: [Word] -> Void, failure: (String) -> Void) {
         let token = Defaults.authenToken.getString() ?? ""
@@ -24,7 +25,7 @@ class WordListService {
                          "option": option,
                          "per_page": "15"]
         }
-        Alamofire.request(.GET, self.linkJSON.jsonWordList, parameters: parameter).responseJSON { response in
+        Alamofire.request(.GET, linkJson.jsonWordList, parameters: parameter).responseJSON { response in
             if let JSON = response.result.value {
                 var list = [Word]()
                 guard let wordList = JSON["words"] as? [[String: AnyObject]] else {

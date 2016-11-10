@@ -24,11 +24,13 @@ class User {
     }
     
     convenience init(user: [String: AnyObject]) {
+        print("token = \(user["auth_token"])")
         if let token = user["auth_token"] as? String {
             Defaults.authenToken.set(token)
         }
         if let id = user["id"] as? Int {
             Defaults.userId.set("\(id)")
+            print("userid = \(id)")
         }
         self.init(fullname: user["name"] as? String ?? "", email: user["email"] as? String ?? "", learnedWords: user["learned_words"] as? Int ?? 0, avatar: user["avatar"] as? String ?? "", authToken: user["auth_token"] as? String ?? "")
     }

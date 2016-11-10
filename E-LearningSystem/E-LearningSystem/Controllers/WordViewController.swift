@@ -28,13 +28,18 @@ class WordViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableview?.dataSource = self
         tableview?.registerNib(UINib(nibName: "WordTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
         setupDropdownMenu()
-        wordlistService.showWordList("all_word", categoryID: nil, success: { (success) in
-            self.listWord.appendContentsOf(success)
+        LoadingIndicatorView.show(self.view, loadingText: "Loading")
+        wordlistService.showWordList("all_word", categoryID: -1, success: { (success) in
+            for word in success {
+                self.listWord.append(word)
+            }
             self.tableview?.reloadData()
+            LoadingIndicatorView.hide()
         }) { (failure) in
             let alertController = UIAlertController(title: "Message", message: failure, preferredStyle: .Alert)
             let OkButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
             alertController.addAction(OkButton)
+            LoadingIndicatorView.hide()
             self.presentViewController(alertController, animated: true) {
             }
         }
@@ -93,7 +98,6 @@ class WordViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        
         return 1
     }
     
@@ -110,8 +114,8 @@ class WordViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if self.wordTableView == tableView {
             if let cell = tableView.dequeueReusableCellWithIdentifier("wordDropdow", forIndexPath: indexPath) as? DropdownCell {
-                let category = listCategories[indexPath.row]
-                cell.textLabel?.text = category["name"] as? String
+                let cate = listCategories[indexPath.row]
+                cell.textLabel?.text = cate["name"] as? String
                 return cell
             }
             return UITableViewCell()
@@ -135,34 +139,39 @@ class WordViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let category = listCategories[indexPath.row]
             self.wordFilterButton?.setTitle(category["name"] as? String ?? "", forState: .Normal)
             self.wordTableView?.hidden = true
+            LoadingIndicatorView.show(self.view, loadingText: "Loading")
             wordlistService.showWordList("all_word", categoryID: category["id"] as? Int ?? nil, success: { (success) in
                 dispatch_async(dispatch_get_main_queue(), {
                     self.listWord.removeAll()
                     self.listWord.appendContentsOf(success)
                     self.tableview.reloadData()
+                    LoadingIndicatorView.hide()
                 })
                 }, failure: { (message) in
                     let alerController = UIAlertController(title: "Message", message: message, preferredStyle: .Alert)
                     let OkButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
                     alerController.addAction(OkButton)
+                    LoadingIndicatorView.hide()
                     self.presentViewController(alerController, animated: true) {
                     }
             })
         }
         if tableView == self.answerTableDropdown {
-            let cell = self.wordTableView!.cellForRowAtIndexPath(indexPath) as? DropdownCell
             self.answerFilterButton?.setTitle(anserDropdowList[indexPath.row], forState: .Normal)
             self.answerTableDropdown?.hidden = true
-            wordlistService.showWordList(cell?.textLabel?.text ?? "all", categoryID: -1, success: { (success) in
+            LoadingIndicatorView.show(self.view, loadingText: "Loading")
+            wordlistService.showWordList(anserDropdowList[indexPath.row], categoryID: nil, success: { (success) in
                 dispatch_async(dispatch_get_main_queue(), {
                     self.listWord.removeAll()
                     self.listWord.appendContentsOf(success)
                     self.tableview.reloadData()
+                    LoadingIndicatorView.hide()
                 })
                 }, failure: { (message) in
                     let alerController = UIAlertController(title: "Message", message: message, preferredStyle: .Alert)
                     let OkButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
                     alerController.addAction(OkButton)
+                    LoadingIndicatorView.hide()
                     self.presentViewController(alerController, animated: true) {
                     }
             })

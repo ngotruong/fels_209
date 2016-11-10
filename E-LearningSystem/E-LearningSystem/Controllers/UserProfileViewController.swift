@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class UserProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PassingDataDelegate {
     @IBOutlet weak var avataImageView: UIImageView!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var fullnameLabel: UILabel!
@@ -21,6 +21,8 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     let cellIdentifier = "Cell"
     var lisActivities = [[String: AnyObject]]()
     var categories = CategoriesService()
+    let logOutService = LogoutService()
+    var activityIndicator = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,16 +37,27 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         emailLabel?.text = user.email
         learnedWordLabel?.text = "Learned \(user.learnedWords) words"
         let linkImage = user.avatar
-        if let url = NSURL(string: linkImage) {
-            if let data = NSData(contentsOfURL: url) {
-                avataImageView?.image = UIImage(data: data)
-            } else {
-                avataImageView?.image = UIImage(named: "nonAvatar")
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            if let url = NSURL(string: linkImage) {
+                self.activityIndicator.startAnimating()
+                if let data = NSData(contentsOfURL: url) {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.avataImageView?.image = UIImage(data: data)
+                        self.activityIndicator.stopAnimating()
+                    }
+                } else {
+                    self.avataImageView?.image = UIImage(named: "nonAvatar")
+                    self.activityIndicator.stopAnimating()
+                }
             }
         }
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .Plain, target: self, action: #selector(logOut))
         let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: #selector(UserProfileViewController.editAction))
         navigationItem.rightBarButtonItem = button
         tableView?.registerNib(UINib(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+        activityIndicator.frame = CGRect(x: avataImageView.bounds.size.width/2 - 20, y: avataImageView.bounds.size.height/2 - 20, width: 50, height: 50)
+        avataImageView?.addSubview(activityIndicator)
     }
     
     override func viewDidLayoutSubviews() {
@@ -52,21 +65,67 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         tableView?.contentInset.top = 0
     }
     
+    @objc private func logOut() {
+        LoadingIndicatorView.show(self.view, loadingText: "Loading")
+        weak var weakSelf = self
+        logOutService.getLogOut(user.authToken, success: { (success) in
+            dispatch_async(dispatch_get_main_queue(), {
+                LoadingIndicatorView.hide()
+                weakSelf?.navigationController?.popViewControllerAnimated(true)
+            })
+            }, failure: { (message) in
+                LoadingIndicatorView.hide()
+                let alertValidateController = UIAlertController(title: "Message", message: message["message"] ?? "", preferredStyle: .Alert)
+                let OkButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
+                alertValidateController.addAction(OkButton)
+                weakSelf?.presentViewController(alertValidateController, animated: true) {
+                }
+        })
+    }
+    
     @objc private func editAction() {
         if let profiles = self.storyboard?.instantiateViewControllerWithIdentifier("UpdateProfileViewController") as? UpdateProfileViewController {
+            profiles.user = user
+            profiles.delegate = self
             let navController = UINavigationController(rootViewController: profiles)
             self.presentViewController(navController, animated:true, completion: nil)
         }
     }
     
+    func didSaveUser(user: User) {
+        self.user = user
+        fullnameLabel?.text = user.fullname
+        emailLabel?.text = user.email
+        learnedWordLabel?.text = "Learned \(user.learnedWords) words"
+        let linkImage = user.avatar
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            if let url = NSURL(string: linkImage) {
+                self.activityIndicator.startAnimating()
+                if let data = NSData(contentsOfURL: url) {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.avataImageView?.image = UIImage(data: data)
+                        self.activityIndicator.stopAnimating()
+                    }
+                } else {
+                    self.avataImageView?.image = UIImage(named: "nonAvatar")
+                    self.activityIndicator.stopAnimating()
+                }
+            }
+        }
+    }
+    
     @IBAction func showLession(sender: AnyObject) {
         weak var weakSelf = self
-        categories.getCategories({ (category) in
+        LoadingIndicatorView.show(self.view, loadingText: "Loading")
+        categories.getCategories(user.authToken, success: { (cate) in
             if let categori = weakSelf?.storyboard?.instantiateViewControllerWithIdentifier("Categories") as? CategoriesViewController {
-                categori.listCategories.appendContentsOf(category)
+                categori.listCategories.appendContentsOf(cate)
+                categori.user = self.user
+                LoadingIndicatorView.hide()
                 weakSelf?.navigationController?.pushViewController(categori, animated: true)
             }
         }) { (message) in
+            LoadingIndicatorView.hide()
             let alertValidateController = UIAlertController(title: "Message", message: message["message"] ?? "", preferredStyle: .Alert)
             let OkButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
             alertValidateController.addAction(OkButton)
@@ -77,16 +136,19 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBAction func showWordList(sender: AnyObject) {
         weak var weakSelf = self
-        categories.getCategories({ (category) in
+        LoadingIndicatorView.show(self.view, loadingText: "Loading")
+        categories.getCategories(user.authToken, success: { (cate) in
             if let wordVC = weakSelf?.storyboard?.instantiateViewControllerWithIdentifier("WordList") as? WordViewController {
-                wordVC.listCategories.appendContentsOf(category)
+                wordVC.listCategories.appendContentsOf(cate)
                 wordVC.token = self.user.authToken
+                LoadingIndicatorView.hide()
                 weakSelf?.navigationController?.pushViewController(wordVC, animated: true)
             }
         }) { (message) in
             let alertValidateController = UIAlertController(title: "Message", message: message["message"] ?? "", preferredStyle: .Alert)
             let OkButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
             alertValidateController.addAction(OkButton)
+            LoadingIndicatorView.hide()
             weakSelf?.presentViewController(alertValidateController, animated: true) {
             }
         }

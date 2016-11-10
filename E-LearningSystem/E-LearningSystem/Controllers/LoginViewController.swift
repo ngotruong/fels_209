@@ -18,7 +18,6 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBarHidden = true
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
         signInButton?.round(10, borderWith: 3, borderColor: UIColor.whiteColor().CGColor)
@@ -26,19 +25,31 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         addIconToTextFields()
     }
     
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        self.navigationController?.navigationBarHidden = true
+    }
+    
     @IBAction func signinAction(sender: AnyObject) {
         weak var weakSelf = self
+        LoadingIndicatorView.show(self.view, loadingText: "Loading")
         loginService.signinBasic(emailTextField.text ?? "", password: passwordTextField.text ?? "", success: { (user) in
             if let profiles = weakSelf?.storyboard?.instantiateViewControllerWithIdentifier("UserProfile") as? UserProfileViewController {
                 profiles.user = User(user: user)
                 if let activities = user["activities"] as? [[String: AnyObject]] {
                     profiles.lisActivities.appendContentsOf(activities)
+                    LoadingIndicatorView.hide()
                 }
                 dispatch_async(dispatch_get_main_queue(), {
                     weakSelf?.navigationController?.pushViewController(profiles, animated: true)
                 })
             }
         }) { (message) in
+            LoadingIndicatorView.hide()
             let alertValidateController = UIAlertController(title: "Message", message: "Invalid email/password combination", preferredStyle: .Alert)
             let OkButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
             alertValidateController.addAction(OkButton)
@@ -48,16 +59,25 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     }
     
     @IBAction func signinFBAction(sender: AnyObject) {
+        if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate {
+            appDelegate.isFacebook = true
+        }
         weak var weakSelf = self
+        LoadingIndicatorView.show(self.view, loadingText: "Loading")
         FBSDKLoginManager().logInWithReadPermissions(["email"], fromViewController: self) { (result, error) in
+            LoadingIndicatorView.show(self.view, loadingText: "Loading")
             self.loginService.signinUsingFB({ (user) in
                 if let profiles = weakSelf?.storyboard?.instantiateViewControllerWithIdentifier("UserProfile") as? UserProfileViewController {
                     profiles.user = User(user: user)
                     if let activities = user["activities"] as? [[String: AnyObject]] {
                         profiles.lisActivities.appendContentsOf(activities)
                     }
-                    weakSelf?.navigationController?.pushViewController(profiles, animated: true)
+                    dispatch_async(dispatch_get_main_queue(), {
+                        LoadingIndicatorView.hide()
+                        weakSelf?.navigationController?.pushViewController(profiles, animated: true)
+                    })
                 }}) { (message) in
+                    LoadingIndicatorView.hide()
                     let alertFailureController = UIAlertController(title: "Message", message: "Failed to get from facebook", preferredStyle: .Alert)
                     let OkButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
                     alertFailureController.addAction(OkButton)
@@ -69,6 +89,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     }
     
     @IBAction func signInWithGoogle(sender: AnyObject) {
+        LoadingIndicatorView.show(self.view, loadingText: "Loading")
         GIDSignIn.sharedInstance().signIn()
     }
     
@@ -89,10 +110,12 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
                         profiles.lisActivities.appendContentsOf(activities)
                     }
                     dispatch_async(dispatch_get_main_queue(), {
+                        LoadingIndicatorView.hide()
                         weakSelf?.navigationController?.pushViewController(profiles, animated: true)
                     })
                 }
             }) { (message) in
+                LoadingIndicatorView.hide()
                 let alertValidateController = UIAlertController(title: "Message", message: "Invalid email/password combination", preferredStyle: .Alert)
                 let OkButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
                 alertValidateController.addAction(OkButton)
@@ -100,6 +123,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
                 }
             }
         } else {
+            LoadingIndicatorView.hide()
             let alertValidateController = UIAlertController(title: "Message", message: "Error from server google", preferredStyle: .Alert)
             let OkButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
             alertValidateController.addAction(OkButton)

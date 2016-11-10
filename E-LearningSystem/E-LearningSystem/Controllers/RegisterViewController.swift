@@ -28,6 +28,10 @@ class RegisterViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     // MARK: - Add icons to the Textfields
     private func addIconToTextFields() {
         let imageViewEmail = UIImageView(frame: CGRect(x: 0, y: 0, width: 30, height: 20))
@@ -61,16 +65,20 @@ class RegisterViewController: UIViewController {
     
     @IBAction func createAccountAction(sender: AnyObject) {
         weak var wearkSelf = self
+        LoadingIndicatorView.show(self.view, loadingText: "Loading")
         let signupUser = SignupUser(name: fullnameTextField?.text ?? "", email: emailTextField?.text ?? "", password: passwordTextField?.text ?? "", passwordConfirmation: confirmPasswordTextField?.text ?? "")
         signupService.handleLogicSignup(signupUser, success: { (user) in
+            LoadingIndicatorView.hide()
             wearkSelf?.dismissViewControllerAnimated(true, completion: nil)
             }, validate: { (message) in
+                LoadingIndicatorView.hide()
                 let alertValidateController = UIAlertController(title: "Message", message: message, preferredStyle: .Alert)
                 let OkButton = UIAlertAction(title: "OK", style: .Default, handler: nil)
                 alertValidateController.addAction(OkButton)
                 wearkSelf?.presentViewController(alertValidateController, animated: true) {
                 }
         }) { (message) in
+            LoadingIndicatorView.hide()
             let alertFailedController = UIAlertController(title: "Message", message: message, preferredStyle: .Alert)
             let OkButton = UIAlertAction(title: "OK", style: .Default, handler: nil)
             alertFailedController.addAction(OkButton)
