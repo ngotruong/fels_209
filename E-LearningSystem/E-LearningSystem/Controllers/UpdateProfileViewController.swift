@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol PassingDataDelegate {
+    func didSaveUser(user: User)
+}
+
 class UpdateProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var oldPasswordTextfield: UITextField!
@@ -19,17 +23,18 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
     var user: User!
     var updateProfileService = UpdateProfileService()
     var activityIndicator = UIActivityIndicatorView()
+    var delegate: PassingDataDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addIconToTextFields()
         self.title = "Update Profile"
-        self.emailTextfield.text = user.email
-        self.emailTextfield.userInteractionEnabled = false
-        self.emailTextfield.backgroundColor = UIColor.lightGrayColor()
-        self.fullnameTextfield.text = user.fullname
+        self.emailTextfield?.text = user.email
+        self.emailTextfield?.userInteractionEnabled = false
+        self.emailTextfield?.backgroundColor = UIColor.lightGrayColor()
+        self.fullnameTextfield?.text = user.fullname
         activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
-        activityIndicator.frame = CGRect(x: (self.avataImageView.bounds.size.width/2) - 20, y: (self.avataImageView.bounds.size.height/2) - 20, width: 50, height: 50)
+        activityIndicator.frame = CGRect(x: avataImageView.bounds.size.width/2 - 20, y: avataImageView.bounds.size.height/2 - 20, width: 50, height: 50)
         avataImageView?.addSubview(activityIndicator)
         let linkImage = user.avatar
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
@@ -52,6 +57,10 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
         navigationItem.leftBarButtonItem = buttonCancel
     }
     
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     @IBAction func chooseImage(sender: AnyObject) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -60,17 +69,12 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
         presentViewController(imagePicker, animated: true, completion: nil)
     }
     
-    func updateAction() {
-        LoadingIndicatorView.show(self.view, loadingText: "Updating...")
+    @objc private func updateAction() {
+        LoadingIndicatorView.show(self.view, loadingText: "Loading")
         let userUpdate = UserUpdate(name: fullnameTextfield?.text ?? "", email: emailTextfield?.text ?? "", pass: newPasswordTextfield?.text ?? "", confirmpass: retypePasswordTextfield?.text ?? "", avatar: avataImageView?.image ?? UIImage())
-        updateProfileService.updateProfile(userUpdate, success: { (success) in
-            if let profiles = self.storyboard?.instantiateViewControllerWithIdentifier("UserProfile") as? UserProfileViewController {
-                profiles.user = User(user: success)
-                if let activities = success["activities"] as? [[String: AnyObject]] {
-                    profiles.lisActivities.appendContentsOf(activities)
-                }
-                self.navigationController?.pushViewController(profiles, animated: true)
-            }
+        updateProfileService.updateProfile(userUpdate, success: { (successs) in
+            self.delegate?.didSaveUser(successs)
+            self.dismissViewControllerAnimated(true, completion: nil)
         }) { (failure) in
             let alertController = UIAlertController(title: "Message", message: failure, preferredStyle: .Alert)
             let OkButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
@@ -78,8 +82,12 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
             LoadingIndicatorView.hide()
             self.presentViewController(alertController, animated: true) {
             }
-            
         }
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        avataImageView?.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @objc private func cancelAction() {
@@ -122,10 +130,5 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
         imageViewFullname.image = imageFullname
         fullnameTextfield?.leftView = imageViewFullname
         fullnameTextfield?.leftViewMode = UITextFieldViewMode.Always
-    }
-    
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        avataImageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        self.dismissViewControllerAnimated(true, completion: nil)
     }
 }

@@ -11,7 +11,7 @@ import Foundation
 enum Defaults: String {
     case authenToken = "AuthenToken"
     case userId = "userId"
-
+    
     func set(value: AnyObject?) {
         NSUserDefaults.standardUserDefaults().setObject(value, forKey: self.rawValue)
     }

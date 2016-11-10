@@ -11,11 +11,7 @@ import UIKit
 class WordTableViewCell: UITableViewCell {
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var answerLabel: UILabel!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
+
     func configureCell(word: Word) {
         self.wordLabel.text = word.word
         self.answerLabel.text = word.answer

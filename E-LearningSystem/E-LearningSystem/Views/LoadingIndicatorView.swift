@@ -8,6 +8,7 @@
 import UIKit
 
 class LoadingIndicatorView {
+    
     static var currentOverlay: UIView?
     
     static func show() {

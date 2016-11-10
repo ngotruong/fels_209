@@ -12,6 +12,7 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var tableView: UITableView!
     var listCategories = [[String: AnyObject]]()
     let cellIdentifier = "Cell"
+    var user: User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,13 @@ class CategoriesViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        if let detailLession = self.storyboard?.instantiateViewControllerWithIdentifier("DetailLession") as? DetailLessionViewController {
+            let categories = listCategories[indexPath.row]
+            if let learnedWord = categories["learned_words"] as? Int, name = categories["name"] as? String {
+                detailLession.categories = Categories(learnedWord: learnedWord, name: name)
+            }
+            detailLession.user = user
+            self.navigationController?.pushViewController(detailLession, animated: true)
+        }
     }
 }

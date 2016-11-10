@@ -13,10 +13,6 @@ class CategoriesTableViewCell: UITableViewCell {
     @IBOutlet weak var categoriesLabel: UILabel!
     @IBOutlet weak var leanedWordLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
     func configCellWithContent(cate: [String: AnyObject]?) {
         self.categoriesLabel?.numberOfLines = 0
         self.leanedWordLabel?.numberOfLines = 0

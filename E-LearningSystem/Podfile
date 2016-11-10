@@ -5,7 +5,7 @@ target 'E-LearningSystem' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
   pod 'Google/SignIn'
-  pod 'Alamofire'
+  pod 'Alamofire', '~> 3.5.1'
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
   post_install do |installer|
@@ -16,5 +16,4 @@ target 'E-LearningSystem' do
     end
   end
   # Pods for E-LearningSystem
-
 end

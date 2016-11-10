@@ -9,13 +9,8 @@
 import UIKit
 
 class DropdownCell: UITableViewCell {
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         self.textLabel?.textAlignment = NSTextAlignment.Center
-        self.textLabel?.numberOfLines = 0
-    }
+        self.textLabel?.numberOfLines = 0    }
 }
