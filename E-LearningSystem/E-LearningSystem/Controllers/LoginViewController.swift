@@ -23,12 +23,8 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         self.navigationController?.navigationBarHidden = true
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
-        signInButton?.layer.cornerRadius = 10
-        signInButton?.layer.borderWidth = 3
-        signInButton?.layer.borderColor = UIColor.whiteColor().CGColor
-        signUpButton?.layer.cornerRadius = 10
-        signUpButton?.layer.borderWidth = 3
-        signUpButton?.layer.borderColor = UIColor.whiteColor().CGColor
+        signInButton?.round(10, borderWith: 3, borderColor: UIColor.whiteColor().CGColor)
+        signUpButton?.round(10, borderWith: 3, borderColor: UIColor.whiteColor().CGColor)
         addIconToTextFields()
     }
     
@@ -36,7 +32,10 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         weak var weakSelf = self
         loginService.signinBasic(emailTextField.text ?? "", password: passwordTextField.text ?? "", success: { (user) in
             if let profiles = weakSelf?.storyboard?.instantiateViewControllerWithIdentifier("UserProfile") as? UserProfileViewController {
-                profiles.user = user
+                profiles.user = User(user: user)
+                if let activities = user["activities"] as? [[String: AnyObject]] {
+                    profiles.lisActivities.appendContentsOf(activities)
+                }
                 dispatch_async(dispatch_get_main_queue(), {
                     weakSelf?.navigationController?.pushViewController(profiles, animated: true)
                 })
@@ -55,7 +54,10 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         FBSDKLoginManager().logInWithReadPermissions(["email"], fromViewController: self) { (result, error) in
             self.loginService.signinUsingFB({ (user) in
                 if let profiles = weakSelf?.storyboard?.instantiateViewControllerWithIdentifier("UserProfile") as? UserProfileViewController {
-                    profiles.user = user
+                    profiles.user = User(user: user)
+                    if let activities = user["activities"] as? [[String: AnyObject]] {
+                        profiles.lisActivities.appendContentsOf(activities)
+                    }
                     weakSelf?.navigationController?.pushViewController(profiles, animated: true)
                 }}) { (message) in
                     let alertFailureController = UIAlertController(title: "Message", message: "Failed to get from facebook", preferredStyle: .Alert)
@@ -67,7 +69,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
         }
         
     }
-
+    
     @IBAction func signInWithGoogle(sender: AnyObject) {
         GIDSignIn.sharedInstance().signIn()
     }
@@ -84,7 +86,10 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
             weak var weakSelf = self
             loginService.signInWithGoogle(signInWithGoogle, success: { (user) in
                 if let profiles = weakSelf?.storyboard?.instantiateViewControllerWithIdentifier("UserProfile") as? UserProfileViewController {
-                    profiles.user = user
+                    profiles.user = User(user: user)
+                    if let activities = user["activities"] as? [[String: AnyObject]] {
+                        profiles.lisActivities.appendContentsOf(activities)
+                    }
                     dispatch_async(dispatch_get_main_queue(), {
                         weakSelf?.navigationController?.pushViewController(profiles, animated: true)
                     })
@@ -97,7 +102,11 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
                 }
             }
         } else {
-            print("error")
+            let alertValidateController = UIAlertController(title: "Message", message: "Error from server google", preferredStyle: .Alert)
+            let OkButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
+            alertValidateController.addAction(OkButton)
+            self.presentViewController(alertValidateController, animated: true) {
+            }
         }
     }
     

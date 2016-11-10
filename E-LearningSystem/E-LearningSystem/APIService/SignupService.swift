@@ -9,6 +9,8 @@ import UIKit
 import Alamofire
 class SignupService {
     
+    let linkJson = LinkJSON()
+    
     func handleLogicSignup(sigupUser: SignupUser, success: ([String: AnyObject]) -> Void, validate: (String) -> Void, failure: (String) -> Void) {
         let parameter = ["user": [
             "name": sigupUser.name,
@@ -16,7 +18,7 @@ class SignupService {
             "password": sigupUser.password,
             "password_confirmation": sigupUser.passwordConfirmation
             ]]
-        Alamofire.request(.POST, "https://manh-nt.herokuapp.com/users.json", parameters: parameter).responseJSON { response in
+        Alamofire.request(.POST, self.linkJson.jsonSignUp, parameters: parameter).responseJSON { response in
             if let JSON = response.result.value {
                 if let userApp = JSON["user"] as? [String: AnyObject] {
                     success(userApp)

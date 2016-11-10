@@ -22,9 +22,7 @@ class UpdateProfileViewController: UIViewController {
         super.viewDidLoad()
         addIconToTextFields()
         self.title = "Update Profile"
-        chooseImageButton?.layer.cornerRadius = 10
-        chooseImageButton?.layer.borderWidth = 3
-        chooseImageButton?.layer.borderColor = UIColor.grayColor().CGColor
+        chooseImageButton?.round(10, borderWith: 3, borderColor: UIColor.grayColor().CGColor)
         let buttonSave = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: #selector(UpdateProfileViewController.updateAction))
         let buttonCancel = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: #selector(UpdateProfileViewController.updateAction))
         navigationItem.rightBarButtonItem = buttonSave

@@ -13,17 +13,17 @@ class User {
     var email: String
     var learnedWords: Int
     var avatar: String
-    var activities: [[String : AnyObject]]
+    var authToken: String
     
-    init(fullname: String, email: String, learnedWords: Int, avatar: String, activities: [[String: AnyObject]]) {
+    init(fullname: String, email: String, learnedWords: Int, avatar: String, authToken: String) {
         self.fullname = fullname
         self.email = email
         self.learnedWords = learnedWords
         self.avatar = avatar
-        self.activities = activities
+        self.authToken = authToken
     }
     
-    convenience init(user: [String : AnyObject]) {
-        self.init(fullname: user["name"] as? String ?? "", email: user["email"] as? String ?? "", learnedWords: user["learned_words"] as? Int ?? 0, avatar: user["avatar"] as? String ?? "", activities: user["activities"] as? [[String : AnyObject]] ?? [["": ""]])
+    convenience init(user: [String: AnyObject]) {
+        self.init(fullname: user["name"] as? String ?? "", email: user["email"] as? String ?? "", learnedWords: user["learned_words"] as? Int ?? 0, avatar: user["avatar"] as? String ?? "", authToken: user["auth_token"] as? String ?? "")
     }
 }

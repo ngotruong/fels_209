@@ -15,13 +15,18 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var fullnameLabel: UILabel!
     @IBOutlet weak var learnedWordLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var wordButton: UIButton!
+    @IBOutlet weak var lessionButton: UIButton!
     
     var user: User!
     let cellIdentifier = "Cell"
-    private var lisActivities: [[String: AnyObject]]!
+    var lisActivities = [[String: AnyObject]]()
+    var categories = CategoriesService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        wordButton?.round(10, borderWith: 1, borderColor: UIColor.grayColor().CGColor)
+        lessionButton?.round(10, borderWith: 1, borderColor: UIColor.grayColor().CGColor)
         tableView?.delegate = self
         tableView?.dataSource = self
         self.title = "Profile"
@@ -41,7 +46,6 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: #selector(UserProfileViewController.editAction))
         navigationItem.rightBarButtonItem = button
         tableView?.registerNib(UINib(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
-        lisActivities = user.activities
     }
     
     override func viewDidLayoutSubviews() {
@@ -56,6 +60,22 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    @IBAction func showLession(sender: AnyObject) {
+        weak var weakSelf = self
+        categories.getCategories(user.authToken, success: { (cate) in
+            if let categori = weakSelf?.storyboard?.instantiateViewControllerWithIdentifier("Categories") as? CategoriesViewController {
+                categori.listCategories.appendContentsOf(cate)
+                weakSelf?.navigationController?.pushViewController(categori, animated: true)
+            }
+        }) { (message) in
+            let alertValidateController = UIAlertController(title: "Message", message: message["message"] ?? "", preferredStyle: .Alert)
+            let OkButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
+            alertValidateController.addAction(OkButton)
+            weakSelf?.presentViewController(alertValidateController, animated: true) {
+            }
+        }
+    }
+    
     // MARK:  UITableViewDataSource Methods
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return lisActivities.count
@@ -63,12 +83,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as? HomeTableViewCell {
-            cell.timeCreateLabel?.numberOfLines = 0
-            cell.contentLabel?.numberOfLines = 0
-            cell.avataImageView?.backgroundColor = UIColor.orangeColor()
-            let activities = lisActivities[indexPath.row]
-            cell.contentLabel?.text = activities["content"] as? String
-            cell.timeCreateLabel?.text = activities["created_at"] as? String
+            cell.configCellWithContent(lisActivities[indexPath.row])
             return cell
         }
         return UITableViewCell()
