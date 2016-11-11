@@ -38,6 +38,7 @@
 		08D8DB6B1DD17E5D0024AA27 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
 		08E7D06C1DD2DE5F006924B8 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		08E7D06F1DD2F74C006924B8 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		14083D7A1DD5B4A20036034B /* E-LearningSystem.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "E-LearningSystem.entitlements"; sourceTree = "<group>"; };
 		14680AC71DD027C900686780 /* LoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		14EAF8E31DD08A5300DE825D /* SignupService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupService.swift; sourceTree = "<group>"; };
 		14EAF8E51DD0937700DE825D /* SignupUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignupUser.swift; path = "E-LearningSystem/APIService/SignupUser.swift"; sourceTree = SOURCE_ROOT; };
@@ -79,6 +80,7 @@
 		081DEFCC1DC974960063677D /* E-LearningSystem */ = {
 			isa = PBXGroup;
 			children = (
+				14083D7A1DD5B4A20036034B /* E-LearningSystem.entitlements */,
 				08D8DB681DD17E460024AA27 /* Views */,
 				14680AC61DD027B300686780 /* APIService */,
 				0822402A1DCC334000E131D9 /* AppDelegate */,
@@ -208,6 +210,11 @@
 						CreatedOnToolsVersion = 8.1;
 						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -445,6 +452,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "E-LearningSystem/E-LearningSystem.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "E-LearningSystem/Info.plist";
@@ -464,6 +472,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "E-LearningSystem/E-LearningSystem.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "E-LearningSystem/Info.plist";

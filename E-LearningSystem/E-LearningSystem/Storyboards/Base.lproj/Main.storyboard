@@ -78,6 +78,9 @@
                                     <constraint firstAttribute="width" constant="46" id="eme-uT-D5d"/>
                                 </constraints>
                                 <state key="normal" image="facebook_icon"/>
+                                <connections>
+                                    <action selector="signinFBAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QEW-tn-HXp"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.28805887861824053" green="0.84288796868691374" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
