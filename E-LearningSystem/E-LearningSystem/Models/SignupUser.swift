@@ -13,6 +13,7 @@ class SignupUser {
     var email: String
     var password: String
     var passwordConfirmation: String
+    
     init(name: String, email: String, password: String, passwordConfirmation: String) {
         self.name = name
         self.email = email
