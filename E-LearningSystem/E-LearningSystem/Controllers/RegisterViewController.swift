@@ -20,12 +20,8 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        createAccountButton?.layer.cornerRadius = 10
-        createAccountButton?.layer.borderWidth = 2
-        createAccountButton?.layer.borderColor = UIColor.whiteColor().CGColor
-        signInButton?.layer.cornerRadius = 10
-        signInButton?.layer.borderWidth = 2
-        signInButton?.layer.borderColor = UIColor.whiteColor().CGColor
+        createAccountButton?.round(10, borderWith: 2, borderColor: UIColor.whiteColor().CGColor)
+        signInButton?.round(10, borderWith: 2, borderColor: UIColor.whiteColor().CGColor)
         addIconToTextFields()
     }
     
@@ -82,9 +78,5 @@ class RegisterViewController: UIViewController {
             wearkSelf?.presentViewController(alertFailedController, animated: true) {
             }
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
 }

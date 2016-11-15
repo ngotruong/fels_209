@@ -283,6 +283,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hbh-B6-oap">
                                         <rect key="frame" x="187" y="15" width="188" height="30"/>
                                         <state key="normal" title="Lession"/>
+                                        <connections>
+                                            <action selector="showLession:" destination="lHc-Xd-x68" eventType="touchUpInside" id="nPk-NX-ODE"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -383,12 +386,47 @@
                         <outlet property="emailLabel" destination="cFr-YV-1UI" id="VQq-oN-rbw"/>
                         <outlet property="fullnameLabel" destination="1K5-6d-yXN" id="JBd-ai-xuh"/>
                         <outlet property="learnedWordLabel" destination="cxi-ow-r1L" id="Phc-In-ZuL"/>
+                        <outlet property="lessionButton" destination="Hbh-B6-oap" id="OO3-jf-jcx"/>
                         <outlet property="tableView" destination="LXK-Tr-8wT" id="S2B-GP-2NP"/>
+                        <outlet property="wordButton" destination="fAz-iM-Tcw" id="u85-Kp-lrX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZEH-uB-oAX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1057" y="783"/>
+        </scene>
+        <!--Categories View Controller-->
+        <scene sceneID="dJU-Rq-x7U">
+            <objects>
+                <viewController storyboardIdentifier="Categories" id="tTT-CK-3eI" customClass="CategoriesViewController" customModule="E_LearningSystem" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cSd-Af-Pf3"/>
+                        <viewControllerLayoutGuide type="bottom" id="fqN-7h-hZa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KjJ-dd-cDf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DJ9-sW-YWI">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DJ9-sW-YWI" firstAttribute="top" secondItem="KjJ-dd-cDf" secondAttribute="top" id="WTE-3z-AGE"/>
+                            <constraint firstItem="fqN-7h-hZa" firstAttribute="top" secondItem="DJ9-sW-YWI" secondAttribute="bottom" id="eD9-3C-6CH"/>
+                            <constraint firstAttribute="trailing" secondItem="DJ9-sW-YWI" secondAttribute="trailing" id="ihr-r5-Czy"/>
+                            <constraint firstItem="DJ9-sW-YWI" firstAttribute="leading" secondItem="KjJ-dd-cDf" secondAttribute="leading" id="vZp-Nh-ChC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="DJ9-sW-YWI" id="4Qg-kl-ldk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i4c-y9-3nc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1056.8" y="1459.52023988006"/>
         </scene>
         <!--Update Profile View Controller-->
         <scene sceneID="c0l-IP-Nrd">

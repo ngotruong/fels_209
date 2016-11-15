@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040B10EA1DD8573B00E4B7EA /* CategoriesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040B10E91DD8573B00E4B7EA /* CategoriesService.swift */; };
+		040B10ED1DD8575500E4B7EA /* CategoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040B10EB1DD8575500E4B7EA /* CategoriesTableViewCell.swift */; };
+		040B10EE1DD8575500E4B7EA /* CategoriesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 040B10EC1DD8575500E4B7EA /* CategoriesTableViewCell.xib */; };
+		040B10F01DD8577000E4B7EA /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040B10EF1DD8577000E4B7EA /* CategoriesViewController.swift */; };
 		081D53701DD4061200991C66 /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 081D536F1DD4061200991C66 /* UpdateProfileViewController.swift */; };
 		082240381DCC334000E131D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0822402B1DCC334000E131D9 /* AppDelegate.swift */; };
 		0822403A1DCC334000E131D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 082240301DCC334000E131D9 /* Assets.xcassets */; };
@@ -14,6 +18,8 @@
 		0822403C1DCC334000E131D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 082240341DCC334000E131D9 /* Main.storyboard */; };
 		0822403E1DCC38E200E131D9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0822403D1DCC38E200E131D9 /* LoginViewController.swift */; };
 		082240401DCC392000E131D9 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0822403F1DCC392000E131D9 /* RegisterViewController.swift */; };
+		08C915291DD99AFD004860B8 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C915281DD99AFD004860B8 /* CustomView.swift */; };
+		08C9152B1DD9A3C6004860B8 /* LinkJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C9152A1DD9A3C6004860B8 /* LinkJSON.swift */; };
 		08CD3D121DD445320018778F /* SignupUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CD3D111DD445320018778F /* SignupUser.swift */; };
 		08D8DB6D1DD17E5D0024AA27 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D8DB6A1DD17E5D0024AA27 /* HomeTableViewCell.swift */; };
 		08D8DB6E1DD17E5D0024AA27 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08D8DB6B1DD17E5D0024AA27 /* HomeTableViewCell.xib */; };
@@ -27,6 +33,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		040B10E91DD8573B00E4B7EA /* CategoriesService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesService.swift; sourceTree = "<group>"; };
+		040B10EB1DD8575500E4B7EA /* CategoriesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewCell.swift; sourceTree = "<group>"; };
+		040B10EC1DD8575500E4B7EA /* CategoriesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoriesTableViewCell.xib; sourceTree = "<group>"; };
+		040B10EF1DD8577000E4B7EA /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		081D536F1DD4061200991C66 /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
 		081DEFCA1DC974960063677D /* E-LearningSystem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "E-LearningSystem.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		081DEFD91DC974960063677D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -36,6 +46,8 @@
 		082240351DCC334000E131D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0822403D1DCC38E200E131D9 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0822403F1DCC392000E131D9 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		08C915281DD99AFD004860B8 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		08C9152A1DD9A3C6004860B8 /* LinkJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkJSON.swift; sourceTree = "<group>"; };
 		08CD3D111DD445320018778F /* SignupUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupUser.swift; sourceTree = "<group>"; };
 		08D8DB6A1DD17E5D0024AA27 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		08D8DB6B1DD17E5D0024AA27 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
@@ -87,11 +99,11 @@
 			children = (
 				14083D7A1DD5B4A20036034B /* E-LearningSystem.entitlements */,
 				0822402A1DCC334000E131D9 /* AppDelegate */,
-				08D8DB681DD17E460024AA27 /* Views */,
-				14680AC61DD027B300686780 /* APIService */,
-				0822402C1DCC334000E131D9 /* Controllers */,
 				08E7D06E1DD2F623006924B8 /* Models */,
+				08D8DB681DD17E460024AA27 /* Views */,
+				0822402C1DCC334000E131D9 /* Controllers */,
 				0822402F1DCC334000E131D9 /* Resources */,
+				14680AC61DD027B300686780 /* APIService */,
 				082240311DCC334000E131D9 /* Storyboards */,
 				081DEFD91DC974960063677D /* Info.plist */,
 				08EACA601DD4515600FAF95E /* E-LearningSystem-Bridging-Header.h */,
@@ -112,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				081D536F1DD4061200991C66 /* UpdateProfileViewController.swift */,
+				040B10EF1DD8577000E4B7EA /* CategoriesViewController.swift */,
 				08E7D06C1DD2DE5F006924B8 /* UserProfileViewController.swift */,
 				0822403F1DCC392000E131D9 /* RegisterViewController.swift */,
 				0822403D1DCC38E200E131D9 /* LoginViewController.swift */,
@@ -141,6 +154,8 @@
 			children = (
 				08D8DB6A1DD17E5D0024AA27 /* HomeTableViewCell.swift */,
 				08D8DB6B1DD17E5D0024AA27 /* HomeTableViewCell.xib */,
+				040B10EB1DD8575500E4B7EA /* CategoriesTableViewCell.swift */,
+				040B10EC1DD8575500E4B7EA /* CategoriesTableViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -151,6 +166,8 @@
 				08CD3D111DD445320018778F /* SignupUser.swift */,
 				08E7D06F1DD2F74C006924B8 /* User.swift */,
 				08EACA871DD4750D00FAF95E /* UserGooglePlus.swift */,
+				08C915281DD99AFD004860B8 /* CustomView.swift */,
+				08C9152A1DD9A3C6004860B8 /* LinkJSON.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -160,6 +177,7 @@
 			children = (
 				14680AC71DD027C900686780 /* LoginService.swift */,
 				14EAF8E31DD08A5300DE825D /* SignupService.swift */,
+				040B10E91DD8573B00E4B7EA /* CategoriesService.swift */,
 			);
 			path = APIService;
 			sourceTree = "<group>";
@@ -253,6 +271,7 @@
 				0822403C1DCC334000E131D9 /* Main.storyboard in Resources */,
 				0822403A1DCC334000E131D9 /* Assets.xcassets in Resources */,
 				08EACA641DD451F100FAF95E /* GoogleService-Info.plist in Resources */,
+				040B10EE1DD8575500E4B7EA /* CategoriesTableViewCell.xib in Resources */,
 				08D8DB6E1DD17E5D0024AA27 /* HomeTableViewCell.xib in Resources */,
 				0822403B1DCC334000E131D9 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -326,16 +345,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08C915291DD99AFD004860B8 /* CustomView.swift in Sources */,
+				08C9152B1DD9A3C6004860B8 /* LinkJSON.swift in Sources */,
 				08CD3D121DD445320018778F /* SignupUser.swift in Sources */,
 				08D8DB6D1DD17E5D0024AA27 /* HomeTableViewCell.swift in Sources */,
 				08E7D06D1DD2DE5F006924B8 /* UserProfileViewController.swift in Sources */,
 				08EACA881DD4750D00FAF95E /* UserGooglePlus.swift in Sources */,
 				08E7D0701DD2F74C006924B8 /* User.swift in Sources */,
+				040B10EA1DD8573B00E4B7EA /* CategoriesService.swift in Sources */,
 				0822403E1DCC38E200E131D9 /* LoginViewController.swift in Sources */,
 				082240381DCC334000E131D9 /* AppDelegate.swift in Sources */,
 				082240401DCC392000E131D9 /* RegisterViewController.swift in Sources */,
 				081D53701DD4061200991C66 /* UpdateProfileViewController.swift in Sources */,
 				14EAF8E41DD08A5300DE825D /* SignupService.swift in Sources */,
+				040B10ED1DD8575500E4B7EA /* CategoriesTableViewCell.swift in Sources */,
+				040B10F01DD8577000E4B7EA /* CategoriesViewController.swift in Sources */,
 				14680AC81DD027C900686780 /* LoginService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
