@@ -528,6 +528,10 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qn6-su-tTE">
                                 <rect key="frame" x="90" y="294" width="195" height="150"/>
                                 <color key="backgroundColor" red="0.67830296125393619" green="0.89774935233160624" blue="0.38616287387745568" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="DlN-fT-M5W"/>
+                                    <constraint firstAttribute="width" constant="195" id="v4l-iK-owV"/>
+                                </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lK2-r9-07N">
                                 <rect key="frame" x="90" y="464" width="195" height="36"/>

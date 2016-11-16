@@ -150,10 +150,9 @@ class WordViewController: UIViewController, UITableViewDataSource, UITableViewDe
             })
         }
         if tableView == self.answerTableDropdown {
-            let cell = self.wordTableView!.cellForRowAtIndexPath(indexPath) as? DropdownCell
             self.answerFilterButton?.setTitle(anserDropdowList[indexPath.row], forState: .Normal)
             self.answerTableDropdown?.hidden = true
-            wordlistService.showWordList(cell?.textLabel?.text ?? "all", categoryID: -1, success: { (success) in
+            wordlistService.showWordList(anserDropdowList[indexPath.row], categoryID: nil, success: { (success) in
                 dispatch_async(dispatch_get_main_queue(), {
                     self.listWord.removeAll()
                     self.listWord.appendContentsOf(success)

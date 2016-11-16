@@ -27,6 +27,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     }
     
     @IBAction func signinAction(sender: AnyObject) {
+        LoadingIndicatorView.show(self.view, loadingText: "Loading...")
         weak var weakSelf = self
         loginService.signinBasic(emailTextField.text ?? "", password: passwordTextField.text ?? "", success: { (user) in
             if let profiles = weakSelf?.storyboard?.instantiateViewControllerWithIdentifier("UserProfile") as? UserProfileViewController {
@@ -39,6 +40,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
                 })
             }
         }) { (message) in
+            LoadingIndicatorView.hide()
             let alertValidateController = UIAlertController(title: "Message", message: "Invalid email/password combination", preferredStyle: .Alert)
             let OkButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
             alertValidateController.addAction(OkButton)
@@ -48,8 +50,13 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
     }
     
     @IBAction func signinFBAction(sender: AnyObject) {
+        if let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate {
+        appDelegate.isFacebook = true
+        }
+        LoadingIndicatorView.show(self.view, loadingText: "Loading...")
         weak var weakSelf = self
         FBSDKLoginManager().logInWithReadPermissions(["email"], fromViewController: self) { (result, error) in
+            LoadingIndicatorView.hide()
             self.loginService.signinUsingFB({ (user) in
                 if let profiles = weakSelf?.storyboard?.instantiateViewControllerWithIdentifier("UserProfile") as? UserProfileViewController {
                     profiles.user = User(user: user)
@@ -63,12 +70,14 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
                     alertFailureController.addAction(OkButton)
                     weakSelf?.presentViewController(alertFailureController, animated: true) {
                     }
+                    LoadingIndicatorView.hide()
             }
         }
         
     }
     
     @IBAction func signInWithGoogle(sender: AnyObject) {
+        LoadingIndicatorView.show(self.view, loadingText: "Loading...")
         GIDSignIn.sharedInstance().signIn()
     }
     
@@ -84,6 +93,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
             weak var weakSelf = self
             loginService.signInWithGoogle(signInWithGoogle, success: { (user) in
                 if let profiles = weakSelf?.storyboard?.instantiateViewControllerWithIdentifier("UserProfile") as? UserProfileViewController {
+                    LoadingIndicatorView.hide()
                     profiles.user = User(user: user)
                     if let activities = user["activities"] as? [[String: AnyObject]] {
                         profiles.lisActivities.appendContentsOf(activities)
@@ -93,6 +103,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
                     })
                 }
             }) { (message) in
+                LoadingIndicatorView.hide()
                 let alertValidateController = UIAlertController(title: "Message", message: "Invalid email/password combination", preferredStyle: .Alert)
                 let OkButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
                 alertValidateController.addAction(OkButton)
@@ -100,6 +111,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDeleg
                 }
             }
         } else {
+            LoadingIndicatorView.hide()
             let alertValidateController = UIAlertController(title: "Message", message: "Error from server google", preferredStyle: .Alert)
             let OkButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
             alertValidateController.addAction(OkButton)
