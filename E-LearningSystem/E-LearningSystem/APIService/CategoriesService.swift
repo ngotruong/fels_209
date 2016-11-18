@@ -10,12 +10,11 @@ import UIKit
 import Alamofire
 
 class CategoriesService {
-    
     let linkJson = LinkJSON()
     
-    func getCategories(authToken: String, success: ([[String: AnyObject]]) -> Void, failure: ([String: String]) -> Void) {
+    func getCategories(success: ([[String: AnyObject]]) -> Void, failure: ([String: String]) -> Void) {
         let parameter = [
-            "auth_token": authToken
+            "auth_token": Defaults.authenToken.getString() ?? ""
         ]
         Alamofire.request(.GET, linkJson.jsonCategories, parameters: parameter).responseJSON { response in
             if let JSON = response.result.value {

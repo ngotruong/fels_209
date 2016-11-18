@@ -13,4 +13,5 @@ struct LinkJSON {
     let jsonSignInAuths = "https://manh-nt.herokuapp.com/login.json"
     let jsonSignUp = "https://manh-nt.herokuapp.com/users.json"
     let jsonCategories = "https://manh-nt.herokuapp.com/categories.json"
+    let jsonWordList = "https://manh-nt.herokuapp.com/words.json"
 }

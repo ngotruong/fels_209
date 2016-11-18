@@ -9,7 +9,6 @@
 import UIKit
 
 class CategoriesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
     @IBOutlet weak var tableView: UITableView!
     var listCategories = [[String: AnyObject]]()
     let cellIdentifier = "Cell"

@@ -10,7 +10,6 @@ import UIKit
 import Alamofire
 import FBSDKLoginKit
 class LoginService {
-    
     let linkJson = LinkJSON()
     
     func signinBasic(email: String, password: String, success: ([String: AnyObject]) -> Void, failure: ([String: String]) -> Void) {

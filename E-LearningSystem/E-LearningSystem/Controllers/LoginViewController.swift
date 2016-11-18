@@ -10,12 +10,10 @@ import UIKit
 import FBSDKLoginKit
 
 class LoginViewController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
-    
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
     var loginService = LoginService()
     
     override func viewDidLoad() {

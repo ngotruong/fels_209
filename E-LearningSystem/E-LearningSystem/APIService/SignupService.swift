@@ -8,7 +8,6 @@
 import UIKit
 import Alamofire
 class SignupService {
-    
     let linkJson = LinkJSON()
     
     func handleLogicSignup(sigupUser: SignupUser, success: ([String: AnyObject]) -> Void, validate: (String) -> Void, failure: (String) -> Void) {

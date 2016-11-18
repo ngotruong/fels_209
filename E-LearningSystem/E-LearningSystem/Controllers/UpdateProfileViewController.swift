@@ -9,7 +9,6 @@
 import UIKit
 
 class UpdateProfileViewController: UIViewController {
-
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var oldPasswordTextfield: UITextField!
     @IBOutlet weak var newPasswordTextfield: UITextField!
@@ -24,7 +23,7 @@ class UpdateProfileViewController: UIViewController {
         self.title = "Update Profile"
         chooseImageButton?.round(10, borderWith: 3, borderColor: UIColor.grayColor().CGColor)
         let buttonSave = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Save, target: self, action: #selector(UpdateProfileViewController.updateAction))
-        let buttonCancel = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: #selector(UpdateProfileViewController.updateAction))
+        let buttonCancel = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: #selector(UpdateProfileViewController.cancelAction))
         navigationItem.rightBarButtonItem = buttonSave
         navigationItem.leftBarButtonItem = buttonCancel
     }
@@ -33,6 +32,10 @@ class UpdateProfileViewController: UIViewController {
     }
     
     @objc private func updateAction() {
+    }
+    
+    @objc private func cancelAction() {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: - Add icons to the Textfields

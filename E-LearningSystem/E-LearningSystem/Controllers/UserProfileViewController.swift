@@ -9,7 +9,6 @@
 import UIKit
 
 class UserProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
     @IBOutlet weak var avataImageView: UIImageView!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var fullnameLabel: UILabel!
@@ -62,10 +61,27 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBAction func showLession(sender: AnyObject) {
         weak var weakSelf = self
-        categories.getCategories(user.authToken, success: { (cate) in
+        categories.getCategories({ (category) in
             if let categori = weakSelf?.storyboard?.instantiateViewControllerWithIdentifier("Categories") as? CategoriesViewController {
-                categori.listCategories.appendContentsOf(cate)
+                categori.listCategories.appendContentsOf(category)
                 weakSelf?.navigationController?.pushViewController(categori, animated: true)
+            }
+        }) { (message) in
+            let alertValidateController = UIAlertController(title: "Message", message: message["message"] ?? "", preferredStyle: .Alert)
+            let OkButton = UIAlertAction(title: "Cancel", style: .Default, handler: nil)
+            alertValidateController.addAction(OkButton)
+            weakSelf?.presentViewController(alertValidateController, animated: true) {
+            }
+        }
+    }
+    
+    @IBAction func showWordList(sender: AnyObject) {
+        weak var weakSelf = self
+        categories.getCategories({ (category) in
+            if let wordVC = weakSelf?.storyboard?.instantiateViewControllerWithIdentifier("WordList") as? WordViewController {
+                wordVC.listCategories.appendContentsOf(category)
+                wordVC.token = self.user.authToken
+                weakSelf?.navigationController?.pushViewController(wordVC, animated: true)
             }
         }) { (message) in
             let alertValidateController = UIAlertController(title: "Message", message: message["message"] ?? "", preferredStyle: .Alert)

@@ -9,14 +9,12 @@
 import UIKit
 
 class CategoriesTableViewCell: UITableViewCell {
-    
     @IBOutlet weak var categoriesImageView: UIImageView!
     @IBOutlet weak var categoriesLabel: UILabel!
     @IBOutlet weak var leanedWordLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     func configCellWithContent(cate: [String: AnyObject]?) {
