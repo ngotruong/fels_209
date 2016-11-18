@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import FBSDKLoginKit
+
 class LoginService {
     let linkJson = LinkJSON()
     
@@ -45,6 +46,7 @@ class LoginService {
                     "remote_avatar_url": "https://graph.facebook.com/\(userFb["id"] ?? "687581134725022")/picture?type=large&return_ssl_resources=1",
                     "user[provider]": "facebook"
                     ]]
+                print(self.linkJson.jsonSignInAuths)
                 Alamofire.request(.POST, self.linkJson.jsonSignInAuths, parameters: parameter).responseJSON { response in
                     if let JSON = response.result.value {
                         guard let user = JSON["user"] as? [String: AnyObject] else {

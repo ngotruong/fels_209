@@ -27,6 +27,9 @@
 		08E7D0701DD2F74C006924B8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E7D06F1DD2F74C006924B8 /* User.swift */; };
 		08EACA641DD451F100FAF95E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 08EACA631DD451F100FAF95E /* GoogleService-Info.plist */; };
 		08EACA881DD4750D00FAF95E /* UserGooglePlus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EACA871DD4750D00FAF95E /* UserGooglePlus.swift */; };
+		145FE3521DDEDBDD00899A9D /* UpdateProfileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145FE3511DDEDBDD00899A9D /* UpdateProfileService.swift */; };
+		145FE3541DDEDC0800899A9D /* UserUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145FE3531DDEDC0800899A9D /* UserUpdate.swift */; };
+		145FE3561DDEDC2B00899A9D /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145FE3551DDEDC2B00899A9D /* LoadingIndicatorView.swift */; };
 		14659DCF1DDBEBE7001B7CD4 /* DropdownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14659DCD1DDBEBE7001B7CD4 /* DropdownCell.swift */; };
 		14659E1D1DDC0B9A001B7CD4 /* WordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 146A73BC1DDAB450009B7118 /* WordViewController.swift */; };
 		14659E221DDC52A0001B7CD4 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14659E211DDC52A0001B7CD4 /* Defaults.swift */; };
@@ -64,6 +67,9 @@
 		08EACA631DD451F100FAF95E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		08EACA871DD4750D00FAF95E /* UserGooglePlus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserGooglePlus.swift; sourceTree = "<group>"; };
 		14083D7A1DD5B4A20036034B /* E-LearningSystem.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "E-LearningSystem.entitlements"; sourceTree = "<group>"; };
+		145FE3511DDEDBDD00899A9D /* UpdateProfileService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UpdateProfileService.swift; path = "E-LearningSystem/APIService/UpdateProfileService.swift"; sourceTree = "<group>"; };
+		145FE3531DDEDC0800899A9D /* UserUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserUpdate.swift; path = "E-LearningSystem/Models/UserUpdate.swift"; sourceTree = "<group>"; };
+		145FE3551DDEDC2B00899A9D /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoadingIndicatorView.swift; path = "E-LearningSystem/Views/LoadingIndicatorView.swift"; sourceTree = "<group>"; };
 		14659DCD1DDBEBE7001B7CD4 /* DropdownCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropdownCell.swift; sourceTree = "<group>"; };
 		14659E211DDC52A0001B7CD4 /* Defaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		14680AC71DD027C900686780 /* LoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
@@ -93,6 +99,9 @@
 		081DEFC11DC974960063677D = {
 			isa = PBXGroup;
 			children = (
+				145FE3551DDEDC2B00899A9D /* LoadingIndicatorView.swift */,
+				145FE3531DDEDC0800899A9D /* UserUpdate.swift */,
+				145FE3511DDEDBDD00899A9D /* UpdateProfileService.swift */,
 				081DEFCC1DC974960063677D /* E-LearningSystem */,
 				081DEFCB1DC974960063677D /* Products */,
 				F970AB28544A83FEC6771653 /* Pods */,
@@ -375,6 +384,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				145FE3561DDEDC2B00899A9D /* LoadingIndicatorView.swift in Sources */,
+				145FE3541DDEDC0800899A9D /* UserUpdate.swift in Sources */,
+				145FE3521DDEDBDD00899A9D /* UpdateProfileService.swift in Sources */,
 				14659E1D1DDC0B9A001B7CD4 /* WordViewController.swift in Sources */,
 				08C915291DD99AFD004860B8 /* CustomView.swift in Sources */,
 				08C9152B1DD9A3C6004860B8 /* LinkJSON.swift in Sources */,

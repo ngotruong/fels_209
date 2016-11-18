@@ -21,6 +21,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     let cellIdentifier = "Cell"
     var lisActivities = [[String: AnyObject]]()
     var categories = CategoriesService()
+    var activityIndicator = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,20 +32,34 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
         self.title = "Profile"
         self.navigationController?.navigationBarHidden = false
         self.navigationItem.setHidesBackButton(true, animated:true)
+        let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: #selector(UserProfileViewController.editAction))
+        navigationItem.rightBarButtonItem = button
+        tableView?.registerNib(UINib(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+        activityIndicator.frame = CGRect(x: avataImageView.bounds.size.width/2 - 20, y: avataImageView.bounds.size.height/2 - 20, width: 50, height: 50)
+        avataImageView?.addSubview(activityIndicator)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
         fullnameLabel?.text = user.fullname
         emailLabel?.text = user.email
         learnedWordLabel?.text = "Learned \(user.learnedWords) words"
         let linkImage = user.avatar
-        if let url = NSURL(string: linkImage) {
-            if let data = NSData(contentsOfURL: url) {
-                avataImageView?.image = UIImage(data: data)
-            } else {
-                avataImageView?.image = UIImage(named: "nonAvatar")
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            if let url = NSURL(string: linkImage) {
+                self.activityIndicator.startAnimating()
+                if let data = NSData(contentsOfURL: url) {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.avataImageView?.image = UIImage(data: data)
+                        self.activityIndicator.stopAnimating()
+                    }
+                } else {
+                    self.avataImageView?.image = UIImage(named: "nonAvatar")
+                    self.activityIndicator.stopAnimating()
+                }
             }
         }
-        let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Edit, target: self, action: #selector(UserProfileViewController.editAction))
-        navigationItem.rightBarButtonItem = button
-        tableView?.registerNib(UINib(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: cellIdentifier)
     }
     
     override func viewDidLayoutSubviews() {
@@ -54,6 +69,7 @@ class UserProfileViewController: UIViewController, UITableViewDelegate, UITableV
     
     @objc private func editAction() {
         if let profiles = self.storyboard?.instantiateViewControllerWithIdentifier("UpdateProfileViewController") as? UpdateProfileViewController {
+            profiles.user = user
             let navController = UINavigationController(rootViewController: profiles)
             self.presentViewController(navController, animated:true, completion: nil)
         }

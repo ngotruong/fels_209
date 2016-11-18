@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 enum Defaults: String {
     case authenToken = "AuthenToken"
     case userId = "userId"

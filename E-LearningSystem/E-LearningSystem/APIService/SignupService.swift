@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+
 class SignupService {
     let linkJson = LinkJSON()
     
@@ -22,7 +23,6 @@ class SignupService {
                 if let userApp = JSON["user"] as? [String: AnyObject] {
                     success(userApp)
                 } else {
-                    print(JSON)
                     if let message = JSON as? [String: AnyObject] {
                         validate(self.formatMessage(message))
                     } else {
